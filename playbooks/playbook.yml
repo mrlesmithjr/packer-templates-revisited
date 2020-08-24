@@ -18,7 +18,7 @@
 
     - name: Vagrant Specific Tasks
       include_tasks: vagrant.yml
-      when: packer_builder_type not in ["proxmox"]
+      when: packer_builder_type not in ["proxmox", "vsphere-iso"]
 
     - name: VirtualBox Specific Tasks
       include_tasks: virtualbox.yml

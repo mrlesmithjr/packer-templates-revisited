@@ -9,9 +9,9 @@ format. Hence this project.
 The following table represents all distros including versions and builders
 supported.
 
-| Distro   | Version  | Template                      | Builder                                                             |
-| -------- | :------- | :---------------------------- | :------------------------------------------------------------------ |
-| `Ubuntu` | `Bionic` | `Ubuntu/ubuntu-bionic64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso` |
+| Distro   | Version  | Template                      | Builder                                                                            |
+| -------- | :------- | :---------------------------- | :--------------------------------------------------------------------------------- |
+| `Ubuntu` | `Bionic` | `Ubuntu/ubuntu-bionic64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 
 ## Usage
 
@@ -77,6 +77,23 @@ packer build -only virtualbox-iso distro-version.json
 ```
 
 ### vmware-iso
+
+### vsphere-iso
+
+In order to build vSphere images, do the following:
+
+> NOTE: Replace values which represent your environment.
+
+```bash
+export VSPHERE_CLUSTER=Compute
+export VSPHERE_DATACENTER=ATL
+export VSPHERE_DATASTORE=Datastore
+export VSPHERE_FOLDER=Templates
+export VSPHERE_NETWORK=Default
+export VSPHERE_PASSWORD=VMw@re!
+export VSPHERE_USERNAME=administrator@vsphere.local
+export VSPHERE_VCENTER_SERVER=vcenter.local
+```
 
 ## Provisioners
 
