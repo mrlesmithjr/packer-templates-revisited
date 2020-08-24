@@ -1,0 +1,14 @@
+---
+- name: desktop | Marking as VirtualBox Desktop
+  file:
+    path: /etc/virtualbox_desktop
+    state: touch
+  become: true
+  when: packer_builder_type in ["virtualbox-iso", "virtualbox-ovf"]
+
+- name: desktop | Marking as VMware Desktop
+  file:
+    path: /etc/vmware_desktop
+    state: touch
+  become: true
+  when: packer_builder_type in ["vmware-iso", "vsphere-ovf"]

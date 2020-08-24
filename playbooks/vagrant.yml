@@ -1,0 +1,45 @@
+---
+- name: vagrant | Creating Vagrant User
+  user:
+    append: true
+    comment: ""
+    generate_ssh_key: true
+    groups:
+      - sudo
+    name: vagrant
+    password: $6$65vHTvHObw3S1$i5y3tIirU7VtzxlFvGZXWKbOHd5y8lk.3i9.SwFeVdQDHTyQRkwc1EBHFS3UcXo1D8rVF/arClbU58WMpQwjm0
+    shell: /bin/bash
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: vagrant | Creating Vagrant User
+  user:
+    append: true
+    comment: ""
+    generate_ssh_key: true
+    groups:
+      - sudo
+      - wheel
+    name: vagrant
+    password: $6$65vHTvHObw3S1$i5y3tIirU7VtzxlFvGZXWKbOHd5y8lk.3i9.SwFeVdQDHTyQRkwc1EBHFS3UcXo1D8rVF/arClbU58WMpQwjm0
+    shell: /bin/bash
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: vagrant | Adding Vagrant Public Key
+  authorized_key:
+    key: https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub
+    user: vagrant
+    state: present
+  become: true
+
+- name: vagrant | Configuring /home/vagrant/.ssh Permissions
+  file:
+    path: /home/vagrant/.ssh
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: u=rwx,g=,o=
+  become: true

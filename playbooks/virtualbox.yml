@@ -1,0 +1,27 @@
+---
+- name: virtualbox | Mounting VirtualBox Additions ISO
+  mount:
+    name: /mnt/virtualbox
+    src: "/home/{{ ansible_user }}/VBoxGuestAdditions.iso"
+    opts: loop
+    state: mounted
+    fstype: iso9660
+  become: true
+
+- name: virtualbox | Installing VirtualBox Additions
+  shell: sh /mnt/virtualbox/VBoxLinuxAdditions.run
+  become: true
+  failed_when: false
+
+- name: virtualbox | Unmounting VirtualBox Additions ISO
+  mount:
+    name: /mnt/virtualbox
+    state: absent
+    fstype: iso9660
+  become: true
+
+- name: virtualbox | Removing /home/{{ ansible_user }}/VBoxGuestAdditions.iso
+  file:
+    path: "/home/{{ ansible_user }}/VBoxGuestAdditions.iso"
+    state: absent
+  become: true

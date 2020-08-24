@@ -1,0 +1,93 @@
+---
+- name: cleanup | Uninstalling Packages
+  apt:
+    name: []
+    state: absent
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: cleanup | Check if /etc/machine-id exists
+  stat:
+    path: /etc/machine-id
+  register: _machine_id
+
+- name: cleanup | Clearing /etc/machine-id
+  copy:
+    content: ""
+    dest: /etc/machine-id
+  become: true
+  when: _machine_id.stat.exists|bool
+
+- name: cleanup | Finding SSH Key Files to Clean
+  find:
+    paths: /etc/ssh
+    patterns: ssh_host_*
+  register: _ssh_host_keys
+
+- name: cleanup | Cleaning Up SSH Key Files
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  become: true
+  loop: "{{ _ssh_host_keys.files }}"
+
+- name: cleanup | Cleaning Up Random Files/Directories
+  file:
+    path: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+    - /etc/udev/rules.d/70-persistent-net.rules
+    - /var/lib/misc/random-seed
+    - /var/lib/systemd/random-seed
+
+- name: cleanup | Cleaning Up Apt
+  command: "{{ item }}"
+  become: true
+  loop:
+    - apt-get autoremove -y
+    - apt-get clean -y
+  when: ansible_os_family == "Debian"
+
+- name: cleanup | Cleaning Up cloud-init
+  command: cloud-init clean -s -l
+  become: true
+
+- name: cleanup | Finding Temp Files to Clean
+  find:
+    paths:
+      - /tmp
+      - /var/tmp
+    recurse: true
+  register: _temp_files
+
+- name: cleanup | Cleaning Up Temp Files
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  become: true
+  loop: "{{ _temp_files.files }}"
+
+- name: cleanup | Finding Files to Clean in /var/log
+  find:
+    paths: /var/log
+    recurse: true
+  become: true
+  register: _log_files
+
+- name: cleanup | Cleaning Up Files in /var/log
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  become: true
+  loop: "{{ _log_files.files }}"
+
+- name: cleanup | Zeroing Out Free Space to Save Space in the Final Image
+  shell: |
+    dd if=/dev/zero of=/EMPTY bs=1M
+    rm -f /EMPTY
+    sync
+    sync
+    sync
+  become: true
+  failed_when: false

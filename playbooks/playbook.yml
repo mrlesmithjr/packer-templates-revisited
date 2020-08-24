@@ -1,0 +1,32 @@
+---
+- hosts: default
+  tasks:
+    - name: Debug Packer Builder Type
+      debug:
+        var: packer_builder_type
+
+    - name: Base Tasks
+      include_tasks: base.yml
+
+    - name: Debian Specific Tasks
+      include_tasks: debian.yml
+      when: ansible_os_family == "Debian"
+
+    - name: Desktop Specific Tasks
+      include_tasks: desktop.yml
+      when: desktop|bool
+
+    - name: Vagrant Specific Tasks
+      include_tasks: vagrant.yml
+      when: packer_builder_type not in ["proxmox"]
+
+    - name: VirtualBox Specific Tasks
+      include_tasks: virtualbox.yml
+      when: packer_builder_type in ["virtualbox-iso", "virtualbox-ovf"]
+
+    - name: VMware Specific Tasks
+      include_tasks: vmware.yml
+      when: packer_builder_type in ["vmware-iso", "vsphere-iso"]
+
+    - name: Cleaning Up
+      include_tasks: cleanup.yml

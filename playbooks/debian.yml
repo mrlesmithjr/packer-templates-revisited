@@ -1,0 +1,32 @@
+---
+- name: debian | Update Apt Cache
+  apt:
+    update_cache: true
+  become: true
+
+- name: debian | Install Base Packages
+  apt:
+    name:
+      - build-essential
+      - cloud-init
+      - cloud-initramfs-growroot
+      - "linux-headers-{{ ansible_kernel }}"
+    state: present
+  become: true
+
+- name: debian | Uninstall qemu-guest-agent
+  apt:
+    name: qemu-guest-agent
+    state: absent
+  become: true
+  when: packer_builder_type not in ["proxmox", "qemu"]
+
+- name: debian | Configuring /etc/rc.local
+  copy:
+    content: |
+      #!/bin/sh -e
+      test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
+      exit 0
+    dest: /etc/rc.local
+    mode: u=rwx,g=rx,o=rx
+  become: true
