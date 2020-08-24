@@ -1,0 +1,12 @@
+!*
+.DS_STORE
+.vagrant/
+*.box
+*.iso
+output-*/
+packer_cache/
+packer-manifest.json
+private_vars.json
+scripts/
+Vagrantfile
+venv/
