@@ -1,0 +1,6 @@
+# Python requirements for executing
+ansible
+ansible-lint
+mkdocs
+pip-tools
+yamllint

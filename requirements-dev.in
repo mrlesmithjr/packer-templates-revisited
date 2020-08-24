@@ -1,0 +1,3 @@
+# Python requirements for development
+-c requirements.txt
+tox
