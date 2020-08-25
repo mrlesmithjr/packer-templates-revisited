@@ -11,7 +11,7 @@
   become: true
   when:
     - ansible_distribution != "Ubuntu"
-    - ansible_distribution_version is version('20.04', >=)
+    - ansible_distribution_version is version('20.04', '>=')
 
 - name: debian | Uninstall qemu-guest-agent
   apt:
