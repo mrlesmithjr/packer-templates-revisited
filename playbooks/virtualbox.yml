@@ -1,4 +1,30 @@
 ---
+- name: virtualbox | Installing Pre-Reqs
+  apt:
+    name:
+      - build-essential
+      - "linux-headers-{{ ansible_kernel }}"
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: virtualbox | Installing Pre-Reqs
+  yum:
+    name:
+      - "@Development tools"
+      - "kernel-devel-{{ ansible_kernel }}"
+      - "kernel-headers-{{ ansible_kernel }}"
+      - bzip2
+      - dkms
+      - gcc
+      - make
+      - perl
+    state: present
+  become: true
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution != "Fedora"
+
 - name: virtualbox | Mounting VirtualBox Additions ISO
   mount:
     name: /mnt/virtualbox

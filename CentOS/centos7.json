@@ -1,0 +1,251 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+        "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos/ks.7.cfg<enter><wait>"
+      ],
+      "boot_wait": "{{ user `boot_wait` }}",
+      "cloud_init": true,
+      "communicator": "{{ user `communicator` }}",
+      "cores": "{{ user `cpus` }}",
+      "cpu_type": "host",
+      "disks": [
+        {
+          "cache_mode": "{{ user `qemu_disk_cache` }}",
+          "disk_size": "{{ user `proxmox_disk_size` }}",
+          "format": "{{ user `qemu_disk_format` }}",
+          "storage_pool": "{{ user `proxmox_storage_pool` }}",
+          "storage_pool_type": "{{ user `proxmox_storage_pool_type` }}",
+          "type": "{{ user `disk_adapter_type` }}"
+        }
+      ],
+      "http_directory": "{{ template_dir }}/../http",
+      "insecure_skip_tls_verify": true,
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_storage_pool": "{{ user `proxmox_iso_storage_pool` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "memory": "{{ user `memory` }}",
+      "network_adapters": [
+        {
+          "bridge": "{{ user `proxmox_network_bridge` }}"
+        }
+      ],
+      "node": "{{ user `proxmox_node` }}",
+      "os": "l26",
+      "password": "{{ user `proxmox_password` }}",
+      "proxmox_url": "{{ user `proxmox_url` }}",
+      "qemu_agent": true,
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_timeout": "{{ user `ssh_timeout` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "proxmox",
+      "unmount_iso": true,
+      "username": "{{ user `proxmox_username` }}",
+      "vm_name": "{{ user `vm_name` }}"
+    },
+    {
+      "accelerator": "{{ user `qemu_accelerator` }}",
+      "boot_command": [
+        "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos/ks.7.cfg<enter><wait>"
+      ],
+      "boot_wait": "{{ user `boot_wait` }}",
+      "communicator": "{{ user `communicator` }}",
+      "cpus": "{{ user `cpus` }}",
+      "disk_cache": "{{ user `qemu_disk_cache` }}",
+      "disk_interface": "virtio",
+      "disk_size": "{{ user `disk_size` }}",
+      "format": "{{ user `qemu_disk_format` }}",
+      "headless": "{{ user `headless` }}",
+      "http_directory": "{{ template_dir }}/../http",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "memory": "{{ user `memory` }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_timeout": "{{ user `ssh_timeout` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "qemu",
+      "vm_name": "{{ user `vm_name` }}"
+    },
+    {
+      "boot_command": [
+        "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos/ks.7.cfg<enter><wait>"
+      ],
+      "boot_wait": "{{ user `boot_wait` }}",
+      "communicator": "{{ user `communicator` }}",
+      "cpus": "{{ user `cpus` }}",
+      "disk_size": "{{ user `disk_size` }}",
+      "guest_os_type": "RedHat_64",
+      "hard_drive_interface": "{{ user `disk_adapter_type` }}",
+      "headless": "{{ user `headless` }}",
+      "http_directory": "{{ template_dir }}/../http",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "memory": "{{ user `memory` }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_timeout": "{{ user `ssh_timeout` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "virtualbox-iso",
+      "vm_name": "{{ user `vm_name` }}"
+    },
+    {
+      "boot_command": [
+        "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos/ks.7.cfg<enter><wait>"
+      ],
+      "boot_wait": "{{ user `boot_wait` }}",
+      "communicator": "{{ user `communicator` }}",
+      "cpus": "{{ user `cpus` }}",
+      "disk_adapter_type": "{{ user `disk_adapter_type` }}",
+      "disk_size": "{{ user `disk_size` }}",
+      "disk_type_id": 0,
+      "guest_os_type": "centos-64",
+      "headless": "{{ user `headless` }}",
+      "http_directory": "{{ template_dir }}/../http",
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "memory": "{{ user `memory` }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_timeout": "{{ user `ssh_timeout` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "vmware-iso",
+      "vm_name": "{{ user `vm_name` }}",
+      "vmx_data": {
+        "ethernet0.pciSlotNumber": "32"
+      },
+      "vmx_remove_ethernet_interfaces": true
+    },
+    {
+      "CPUS": "{{ user `cpus` }}",
+      "RAM": "{{ user `memory` }}",
+      "boot_command": [
+        "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos/ks.7.cfg<enter><wait>"
+      ],
+      "boot_wait": "{{ user `boot_wait` }}",
+      "cluster": "{{ user `vsphere_cluster` }}",
+      "communicator": "{{ user `communicator` }}",
+      "convert_to_template": true,
+      "datacenter": "{{ user `vsphere_datacenter` }}",
+      "datastore": "{{ user `vsphere_datastore` }}",
+      "disk_controller_type": "pvscsi",
+      "folder": "{{ user `vsphere_folder` }}",
+      "guest_os_type": "centos64Guest",
+      "http_directory": "{{ template_dir }}/../http",
+      "insecure_connection": true,
+      "iso_checksum": "{{ user `iso_checksum` }}",
+      "iso_url": "{{ user `iso_url` }}",
+      "network_adapters": [
+        {
+          "network": "{{ user `vsphere_network` }}",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "password": "{{ user `vsphere_password` }}",
+      "resource_pool": "",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "storage": [
+        {
+          "disk_size": "{{ user `disk_size` }}",
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "{{ user `vsphere_username` }}",
+      "vcenter_server": "{{ user `vsphere_vcenter_server` }}",
+      "vm_name": "{{ user `vm_name` }}"
+    },
+    {
+      "boot_wait": "{{ user `boot_wait` }}",
+      "communicator": "{{ user `communicator` }}",
+      "headless": "{{ user `headless` }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "source_path": "output-{{ user `vm_name` }}-virtualbox-iso-latest/{{ user `vm_name` }}.ovf",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_timeout": "{{ user `ssh_timeout` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "virtualbox-ovf"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "keep_input_artifact": true,
+        "only": ["qemu", "virtualbox-iso", "virtualbox-ovf", "vmware-iso"],
+        "output": "{{ user `vm_name` }}-{{ .Provider }}-{{ timestamp }}.box",
+        "type": "vagrant"
+      },
+      {
+        "access_token": "{{ user `vagrant_cloud_token` }}",
+        "box_tag": "{{ user `vagrant_box_tag` }}",
+        "only": ["qemu", "virtualbox-iso", "virtualbox-ovf", "vmware-iso"],
+        "type": "vagrant-cloud",
+        "version": "{{ timestamp }}"
+      },
+      {
+        "type": "manifest"
+      },
+      {
+        "inline": [
+          "ln -nfs {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }} {{ template_dir }}/output-{{ user `vm_name` }}-virtualbox-iso-latest"
+        ],
+        "only": ["virtualbox-iso"],
+        "only_on": ["darwin", "linux"],
+        "type": "shell-local"
+      }
+    ]
+  ],
+  "provisioners": [
+    {
+      "ansible_env_vars": ["ANSIBLE_HOST_KEY_CHECKING=False"],
+      "extra_arguments": ["--extra-vars", "desktop=false"],
+      "playbook_file": "{{ template_dir }}/../playbooks/playbook.yml",
+      "type": "ansible",
+      "user": "{{ user `ssh_username` }}"
+    }
+  ],
+  "variables": {
+    "boot_wait": "10s",
+    "communicator": "ssh",
+    "cpus": "1",
+    "disk_adapter_type": "scsi",
+    "disk_size": "36864",
+    "headless": "true",
+    "iso_checksum": "659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
+    "iso_url": "http://centos.mirror.constant.com/7/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso",
+    "memory": "1024",
+    "proxmox_disk_size": "8G",
+    "proxmox_iso_storage_pool": "ISOs",
+    "proxmox_network_bridge": "vmbr0",
+    "proxmox_node": "{{ env `PROXMOX_NODE` }}",
+    "proxmox_password": "{{ env `PROXMOX_PASS` }}",
+    "proxmox_storage_pool": "local",
+    "proxmox_storage_pool_type": "directory",
+    "proxmox_url": "{{ env `PROXMOX_URL` }}",
+    "proxmox_username": "{{ env `PROXMOX_USER` }}",
+    "qemu_accelerator": "{{ env `QEMU_ACCEL` }}",
+    "qemu_disk_cache": "writeback",
+    "qemu_disk_format": "qcow2",
+    "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+    "ssh_password": "packer",
+    "ssh_timeout": "60m",
+    "ssh_username": "packer",
+    "vagrant_box_tag": "{{ env `VAGRANT_CLOUD_USER` }}/centos7",
+    "vagrant_cloud_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
+    "vm_name": "centos7",
+    "vsphere_cluster": "{{ env `VSPHERE_CLUSTER` }}",
+    "vsphere_datacenter": "{{ env `VSPHERE_DATACENTER` }}",
+    "vsphere_datastore": "{{ env `VSPHERE_DATASTORE` }}",
+    "vsphere_folder": "{{ env `VSPHERE_FOLDER` }}",
+    "vsphere_network": "{{ env `VSPHERE_NETWORK` }}",
+    "vsphere_password": "{{ env `VSPHERE_PASSWORD` }}",
+    "vsphere_username": "{{ env `VSPHERE_USERNAME` }}",
+    "vsphere_vcenter_server": "{{ env `VSPHERE_VCENTER_SERVER` }}"
+  }
+}

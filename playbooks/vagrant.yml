@@ -19,7 +19,6 @@
     comment: ""
     generate_ssh_key: true
     groups:
-      - sudo
       - wheel
     name: vagrant
     password: $6$65vHTvHObw3S1$i5y3tIirU7VtzxlFvGZXWKbOHd5y8lk.3i9.SwFeVdQDHTyQRkwc1EBHFS3UcXo1D8rVF/arClbU58WMpQwjm0

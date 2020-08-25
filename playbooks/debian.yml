@@ -4,14 +4,6 @@
     update_cache: true
   become: true
 
-- name: debian | Install Base Packages
-  apt:
-    name:
-      - build-essential
-      - "linux-headers-{{ ansible_kernel }}"
-    state: present
-  become: true
-
 - name: debian | Installing cloud-initramfs-growroot
   apt:
     name: cloud-initramfs-growroot

@@ -31,16 +31,6 @@
   become: true
   loop: "{{ _ssh_host_keys.files }}"
 
-- name: cleanup | Cleaning Up Random Files/Directories
-  file:
-    path: "{{ item }}"
-    state: absent
-  become: true
-  loop:
-    - /etc/udev/rules.d/70-persistent-net.rules
-    - /var/lib/misc/random-seed
-    - /var/lib/systemd/random-seed
-
 - name: cleanup | Cleaning Up Apt
   command: "{{ item }}"
   become: true
@@ -48,6 +38,26 @@
     - apt-get autoremove -y
     - apt-get clean -y
   when: ansible_os_family == "Debian"
+
+- name: cleanup | Cleaning Up Yum
+  command: "{{ item }}"
+  become: true
+  loop:
+    - yum clean all
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution != "Fedora"
+
+- name: cleanup | Cleaning Up Random Files/Directories
+  file:
+    path: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+    - /etc/udev/rules.d/70-persistent-net.rules
+    - /var/cache/yum
+    - /var/lib/misc/random-seed
+    - /var/lib/systemd/random-seed
 
 - name: cleanup | Finding Temp Files to Clean
   find:
@@ -64,9 +74,10 @@
   become: true
   loop: "{{ _temp_files.files }}"
 
-- name: cleanup | Finding Files to Clean in /var/log
+- name: cleanup | Finding Log Files to Clean in /var/log
   find:
     paths: /var/log
+    patterns: "*.log"
     recurse: true
   become: true
   register: _log_files

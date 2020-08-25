@@ -1,0 +1,16 @@
+---
+- name: redhat | CentOS Specific Tasks
+  block:
+    - name: redhat | Adding EPEL Repo
+      yum:
+        name: epel-release
+        state: present
+      become: true
+
+    - name: redhat | Installing cloud-utils-growpart
+      yum:
+        name: cloud-utils-growpart
+        state: present
+      become: true
+
+  when: ansible_distribution == "CentOS"

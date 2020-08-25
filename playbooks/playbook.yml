@@ -12,6 +12,10 @@
       include_tasks: debian.yml
       when: ansible_os_family == "Debian"
 
+    - name: RedHat Specific Tasks
+      include_tasks: redhat.yml
+      when: ansible_os_family == "RedHat"
+
     - name: Desktop Specific Tasks
       include_tasks: desktop.yml
       when: desktop|bool
