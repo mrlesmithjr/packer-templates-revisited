@@ -81,6 +81,16 @@ Example usage:
 packer build -only virtualbox-iso distro-version.json
 ```
 
+Once you have built a `virtualbox-iso`, there will be a symlink created to the
+latest version built. This is the `source_path` used for the `virtualbox-ovf`
+builder.
+
+Example usage of `virtualbox-ovf`:
+
+```bash
+packer build -only virtualbox-ovf distro-version.json
+```
+
 ### vmware-iso
 
 ### vsphere-iso

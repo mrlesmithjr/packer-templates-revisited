@@ -1,3 +1,18 @@
+commit 773c3aaaa41a48f702998663f453120fcf96cd22
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Aug 25 17:26:57 2020 -0400
+
+    Added CentOS 7 Support
+    
+    - Also added changes found while testing CentOS
+    - These changes help with Debian distros as well
+
+commit 9bf2fe16ed75b9e900c26080efb721aa6c412af1
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Aug 25 13:33:45 2020 -0400
+
+    Added Ubuntu Focal support
+
 commit e9591d76c5a22a01494ee010c8f6591be66b4efe
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Tue Aug 25 11:16:03 2020 -0400

@@ -3,7 +3,7 @@
 .vagrant/
 *.box
 *.iso
-output-*/
+output-*
 packer_cache/
 packer-manifest.json
 private_vars.json

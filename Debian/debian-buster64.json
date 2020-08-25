@@ -191,7 +191,7 @@
       "headless": "{{ user `headless` }}",
       "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
-      "source_path": "output-virtualbox-iso/{{ user `vm_name` }}.ovf",
+      "source_path": "output-{{ user `vm_name` }}-virtualbox-iso-latest/{{ user `vm_name` }}.ovf",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `ssh_username` }}",
@@ -215,6 +215,14 @@
       },
       {
         "type": "manifest"
+      },
+      {
+        "inline": [
+          "ln -nfs {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }} {{ template_dir }}/output-{{ user `vm_name` }}-virtualbox-iso-latest"
+        ],
+        "only": ["virtualbox-iso"],
+        "only_on": ["darwin", "linux"],
+        "type": "shell-local"
       }
     ]
   ],
