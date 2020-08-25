@@ -11,6 +11,7 @@ supported.
 
 | Distro   | Version  | Template                      | Builder                                                                            |
 | -------- | :------- | :---------------------------- | :--------------------------------------------------------------------------------- |
+| `Debian` | `Buster` | `Debian/debian-buster64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Ubuntu` | `Bionic` | `Ubuntu/ubuntu-bionic64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Ubuntu` | `Xenial` | `Ubuntu/ubuntu-xenial64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 
