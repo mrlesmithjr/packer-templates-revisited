@@ -214,7 +214,7 @@
     "boot_wait": "10s",
     "communicator": "ssh",
     "cpus": "1",
-    "disk_adapter_type": "scsi",
+    "disk_adapter_type": "sata",
     "disk_size": "36864",
     "headless": "true",
     "iso_checksum": "659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193",
