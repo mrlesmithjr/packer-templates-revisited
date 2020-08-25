@@ -49,23 +49,6 @@
     - apt-get clean -y
   when: ansible_os_family == "Debian"
 
-- name: cleanup | Cleaning Up cloud-init
-  block:
-    - name: cleanup | Attempting cloud-init clean
-      command: cloud-init clean -s -l
-      become: true
-
-  rescue:
-    - name: cleanup | Cleaning up cloud-init manually
-      file:
-        path: "{{ item }}"
-        state: absent
-      become: true
-      loop:
-        - /var/lib/cloud/instances
-        - /var/log/cloud-init.log
-        - /var/log/cloud-init-output.log
-
 - name: cleanup | Finding Temp Files to Clean
   find:
     paths:

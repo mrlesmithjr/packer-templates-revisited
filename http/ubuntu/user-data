@@ -1,0 +1,38 @@
+#cloud-config
+autoinstall:
+  version: 1
+  early-commands:
+    # Block inbound SSH to stop Packer trying to connect during intial install
+    - iptables -A INPUT -p tcp --dport 22 -j DROP
+  identity:
+    hostname: ubuntu-server
+    # password is packer
+    password: "$6$AA.Jw829.bXpJ4w$bf2mI99OoUo2F4/rSfnAD9vNg2vjOiJaynMSeOgZcE3PB/OMCRgYuon74mIyzgUiXBEA8/VluqEQuZBGcQq5B."
+    username: packer
+  late-commands:
+    - sed -i 's/^#*\(send dhcp-client-identifier\).*$/\1 = hardware;/' /target/etc/dhcp/dhclient.conf
+    - sed -i 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/g' /target/etc/sudoers
+    - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
+  packages:
+    - openssh-server
+    - qemu-guest-agent
+  ssh:
+    # For now we install openssh-server during package installs
+    allow-pw: true
+    install-server: false
+  storage:
+    layout:
+      name: direct
+    config:
+      - type: disk
+        id: disk0
+        match:
+          size: largest
+      - type: partition
+        id: boot-partition
+        device: disk0
+        size: 1024M
+      - type: partition
+        id: root-partition
+        device: disk0
+        size: -1

@@ -1,0 +1,36 @@
+---
+- name: cloud-init | Installing Cloud-Init
+  package:
+    name: cloud-init
+    state: present
+  become: true
+  when: packer_builder_type in ["proxmox"]
+
+- name: cloud-init | Cleaning Up cloud-init
+  block:
+    - name: cleanup | Attempting cloud-init clean
+      command: cloud-init clean -s -l
+      become: true
+
+  rescue:
+    - name: cloud-init | Cleaning up cloud-init manually
+      file:
+        path: "{{ item }}"
+        state: absent
+      become: true
+      loop:
+        - /var/lib/cloud/instances
+        - /var/log/cloud-init.log
+        - /var/log/cloud-init-output.log
+
+# These need to be done for cloud-init to work correctly
+- name: cloud-init | Cleaning up Cloud Init Configs
+  file:
+    path: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+    - /etc/cloud/cloud.cfg.d/99-installer.cfg # This allows growpart and hostname changes to work
+  when:
+    - ansible_distribution == "Ubuntu"
+    - ansible_distribution_version is version('20.04', '>=')

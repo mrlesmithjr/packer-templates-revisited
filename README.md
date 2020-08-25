@@ -14,6 +14,7 @@ supported.
 | `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
+| `Ubuntu` | `Focal`   | `Ubuntu/ubuntu-focal64.json`   | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Ubuntu` | `Xenial`  | `Ubuntu/ubuntu-xenial64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 
 ## Usage

@@ -8,11 +8,18 @@
   apt:
     name:
       - build-essential
-      - cloud-init
-      - cloud-initramfs-growroot
       - "linux-headers-{{ ansible_kernel }}"
     state: present
   become: true
+
+- name: debian | Installing cloud-initramfs-growroot
+  apt:
+    name: cloud-initramfs-growroot
+    state: present
+  become: true
+  when:
+    - ansible_distribution != "Ubuntu"
+    - ansible_distribution_version is version('20.04', >=)
 
 - name: debian | Uninstall qemu-guest-agent
   apt:
