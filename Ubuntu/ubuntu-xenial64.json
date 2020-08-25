@@ -161,7 +161,11 @@
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `ssh_username` }}",
       "type": "vmware-iso",
-      "vm_name": "{{ user `vm_name` }}"
+      "vm_name": "{{ user `vm_name` }}",
+      "vmx_data": {
+        "ethernet0.pciSlotNumber": "32"
+      },
+      "vmx_remove_ethernet_interfaces": true
     },
     {
       "CPUS": "{{ user `cpus` }}",
