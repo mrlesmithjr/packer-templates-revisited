@@ -9,11 +9,12 @@ format. Hence this project.
 The following table represents all distros including versions and builders
 supported.
 
-| Distro   | Version  | Template                      | Builder                                                                            |
-| -------- | :------- | :---------------------------- | :--------------------------------------------------------------------------------- |
-| `Debian` | `Buster` | `Debian/debian-buster64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `Ubuntu` | `Bionic` | `Ubuntu/ubuntu-bionic64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `Ubuntu` | `Xenial` | `Ubuntu/ubuntu-xenial64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
+| Distro   | Version   | Template                       | Builder                                                                            |
+| -------- | :-------- | :----------------------------- | :--------------------------------------------------------------------------------- |
+| `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
+| `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
+| `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
+| `Ubuntu` | `Xenial`  | `Ubuntu/ubuntu-xenial64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 
 ## Usage
 
@@ -116,3 +117,15 @@ export VAGRANT_CLOUD_USER=yourusername
 ```
 
 ### Manifest
+
+## License
+
+MIT
+
+## Author Information
+
+Larry Smith Jr.
+
+- [@mrlesmithjr](https://twitter.com/mrlesmithjr)
+- [mrlesmithjr@gmail.com](mailto:mrlesmithjr@gmail.com)
+- [http://everythingshouldbevirtual.com](http://everythingshouldbevirtual.com)
