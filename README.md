@@ -9,15 +9,15 @@ format. Hence this project.
 The following table represents all distros including versions and builders
 supported.
 
-| Distro   | Version   | Template                       | Builder                                                                            |
-| -------- | :-------- | :----------------------------- | :--------------------------------------------------------------------------------- |
-| `CentOS` | `7`       | `CentOS/centos7.json`          | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `CentOS` | `8`       | `CentOS/centos8.json`          | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `Ubuntu` | `Focal`   | `Ubuntu/ubuntu-focal64.json`   | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
-| `Ubuntu` | `Xenial`  | `Ubuntu/ubuntu-xenial64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
+|  Distro  |  Version  |            Template            |                                             Builder                                              |
+| :------: | :-------: | :----------------------------: | :----------------------------------------------------------------------------------------------: |
+| `CentOS` |    `7`    |     `CentOS/centos7.json`      | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `CentOS` |    `8`    |     `CentOS/centos8.json`      | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` |  `Focal`  |  `Ubuntu/ubuntu-focal64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` | `Xenial`  | `Ubuntu/ubuntu-xenial64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 
 ## Usage
 
@@ -96,6 +96,30 @@ packer build -only virtualbox-ovf distro-version.json
 ```
 
 ### vmware-iso
+
+### vmware-vmx
+
+> NOTE: The `vmware-vmx` builder is currently only used for testing. So, this
+> builder is excluded from Vagrant and Vagrant Cloud post-processors.
+
+To properly use the `vmware-vmx` builder, you **must** first build a
+`vmware-iso` image.
+
+Example usage:
+
+```bash
+packer build -only vmware-iso distro-version.json
+```
+
+Once you have built a `vmware-iso`, there will be a symlink created to the
+latest version built. This is the `source_path` used for the `vmware-vmx`
+builder.
+
+Example usage of `vmware-vmx`:
+
+```bash
+packer build -only vmware-vmx distro-version.json
+```
 
 ### vsphere-iso
 

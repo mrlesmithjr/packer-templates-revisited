@@ -196,6 +196,18 @@
       "ssh_timeout": "{{ user `ssh_timeout` }}",
       "ssh_username": "{{ user `ssh_username` }}",
       "type": "virtualbox-ovf"
+    },
+    {
+      "boot_wait": "{{ user `boot_wait` }}",
+      "communicator": "{{ user `communicator` }}",
+      "headless": "{{ user `headless` }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "shutdown_command": "{{ user `shutdown_command` }}",
+      "source_path": "output-{{ user `vm_name` }}-vmware-iso-latest/{{ user `vm_name` }}.vmx",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_timeout": "{{ user `ssh_timeout` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "vmware-vmx"
     }
   ],
   "post-processors": [
@@ -218,9 +230,9 @@
       },
       {
         "inline": [
-          "ln -nfs {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }} {{ template_dir }}/output-{{ user `vm_name` }}-virtualbox-iso-latest"
+          "ln -nfs {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }} {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-latest"
         ],
-        "only": ["virtualbox-iso"],
+        "only": ["virtualbox-iso", "vmware-iso"],
         "only_on": ["darwin", "linux"],
         "type": "shell-local"
       }
