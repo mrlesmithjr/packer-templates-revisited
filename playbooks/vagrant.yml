@@ -42,3 +42,12 @@
     group: vagrant
     mode: u=rwx,g=,o=
   become: true
+
+- name: vagrant | Adding Vagrant User to sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    line: vagrant ALL=(ALL) NOPASSWD:ALL
+    validate: visudo -cf %s
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"

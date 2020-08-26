@@ -37,6 +37,7 @@
   loop:
     - apt-get autoremove -y
     - apt-get clean -y
+    - apt-get autoclean -y
   when: ansible_os_family == "Debian"
 
 - name: cleanup | Cleaning Up Yum
@@ -58,6 +59,17 @@
     - /var/cache/yum
     - /var/lib/misc/random-seed
     - /var/lib/systemd/random-seed
+
+- name: cleanup | Cleaning up Cloud Init Configs
+  file:
+    path: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+    - /etc/cloud/cloud.cfg.d/99-installer.cfg
+  when:
+    - ansible_distribution == "Ubuntu"
+    - ansible_distribution_version is version('20.04', '>=')
 
 - name: cleanup | Finding Temp Files to Clean
   find:
@@ -82,12 +94,32 @@
   become: true
   register: _log_files
 
-- name: cleanup | Cleaning Up Files in /var/log
+- name: cleanup | Cleaning Up Log Files in /var/log
   file:
     path: "{{ item.path }}"
     state: absent
   become: true
   loop: "{{ _log_files.files }}"
+
+- name: cleanup | Cleaning Up Random Files/Directories
+  file:
+    path: "{{ item }}"
+    state: absent
+  become: true
+  loop:
+    - /etc/udev/rules.d/70-persistent-net.rules
+    - /var/cache/yum
+    - /var/lib/misc/random-seed
+    - /var/lib/systemd/random-seed
+    - /var/log/audit/audit.log
+    - /var/log/dmesg
+    - /var/log/lastlog
+    - /var/log/maillog
+    - /var/log/messages
+    - /var/log/secure
+    - /var/log/syslog
+    - /var/log/tallylog
+    - /var/log/wtmp
 
 - name: cleanup | Zeroing Out Free Space to Save Space in the Final Image
   shell: |
