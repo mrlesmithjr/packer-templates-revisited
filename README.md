@@ -73,6 +73,9 @@ export QEMU_ACCEL=hvf
 
 ### virtualbox-ovf
 
+> NOTE: The `virtualbox-ovf` builder is currently only used for testing. So, this
+> builder is excluded from Vagrant and Vagrant Cloud post-processors.
+
 To properly use the `virtualbox-ovf` builder, you **must** first build a
 `virtualbox-iso` image.
 

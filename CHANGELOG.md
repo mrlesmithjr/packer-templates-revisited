@@ -1,3 +1,13 @@
+commit c8867394401ece8dff20177fc25d7650d4ea08a0
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 12:23:31 2020 -0400
+
+    Changes for virtualbox-ovf builder
+    
+    Because the current usage of virtualbox-ovf builder is for testing, we
+    will exclude this builder from Vagrant and Vagrant Cloud
+    post-processors.
+
 commit 57e25ef8d836529f0573e9208f69f5b2a76fc662
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Wed Aug 26 12:22:19 2020 -0400
