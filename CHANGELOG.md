@@ -1,3 +1,17 @@
+commit 57e25ef8d836529f0573e9208f69f5b2a76fc662
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 12:22:19 2020 -0400
+
+    More playbook tweaking
+    
+    As I test more on different distros, the playbooks are getting tweaked for efficiency
+
+commit 49b32f950494905d123947d07b3df024301017dc
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 10:48:26 2020 -0400
+
+    Added CentOS 8 support
+
 commit 6a3ce00f8d785cf77539949f4ca3101c8ce2b439
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Wed Aug 26 10:47:56 2020 -0400

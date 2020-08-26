@@ -207,14 +207,14 @@
     [
       {
         "keep_input_artifact": true,
-        "only": ["qemu", "virtualbox-iso", "virtualbox-ovf", "vmware-iso"],
+        "only": ["qemu", "virtualbox-iso", "vmware-iso"],
         "output": "{{ user `vm_name` }}-{{ .Provider }}-{{ timestamp }}.box",
         "type": "vagrant"
       },
       {
         "access_token": "{{ user `vagrant_cloud_token` }}",
         "box_tag": "{{ user `vagrant_box_tag` }}",
-        "only": ["qemu", "virtualbox-iso", "virtualbox-ovf", "vmware-iso"],
+        "only": ["qemu", "virtualbox-iso", "vmware-iso"],
         "type": "vagrant-cloud",
         "version": "{{ timestamp }}"
       },
