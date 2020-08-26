@@ -4,7 +4,7 @@
     content: |
       {{ ansible_date_time.iso8601 }}
     dest: /etc/packer_build_time
-    mode: u=rw,g=r,o=r
+    mode: u=rw,g=rw,o=rw
   become: true
 
 - name: base | Configuring sshd_config Options

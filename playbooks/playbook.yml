@@ -5,6 +5,19 @@
       debug:
         var: packer_builder_type
 
+    - name: Checking if /etc/packer_build_time Exists
+      stat:
+        path: /etc/packer_build_time
+      register: _packer_build_complete_check
+
+    - name: Setting Fact - _packer_build_complete
+      set_fact:
+        _packer_build_complete: "{{ _packer_build_complete_check.stat.exists|bool }}"
+
+    - name: Debug _packer_build_complete
+      debug:
+        var: _packer_build_complete
+
     - name: Base Tasks
       include_tasks: base.yml
 

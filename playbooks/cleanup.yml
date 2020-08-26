@@ -60,17 +60,6 @@
     - /var/lib/misc/random-seed
     - /var/lib/systemd/random-seed
 
-- name: cleanup | Cleaning up Cloud Init Configs
-  file:
-    path: "{{ item }}"
-    state: absent
-  become: true
-  loop:
-    - /etc/cloud/cloud.cfg.d/99-installer.cfg
-  when:
-    - ansible_distribution == "Ubuntu"
-    - ansible_distribution_version is version('20.04', '>=')
-
 - name: cleanup | Finding Temp Files to Clean
   find:
     paths:
@@ -112,7 +101,11 @@
     - /var/lib/misc/random-seed
     - /var/lib/systemd/random-seed
     - /var/log/audit/audit.log
+    - /var/log/auth.log
     - /var/log/dmesg
+    - /var/log/faillog
+    - /var/log/kern.log
+    - /var/log/installer
     - /var/log/lastlog
     - /var/log/maillog
     - /var/log/messages
