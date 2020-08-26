@@ -49,17 +49,6 @@
     - ansible_os_family == "RedHat"
     - ansible_distribution != "Fedora"
 
-- name: cleanup | Cleaning Up Random Files/Directories
-  file:
-    path: "{{ item }}"
-    state: absent
-  become: true
-  loop:
-    - /etc/udev/rules.d/70-persistent-net.rules
-    - /var/cache/yum
-    - /var/lib/misc/random-seed
-    - /var/lib/systemd/random-seed
-
 - name: cleanup | Finding Temp Files to Clean
   find:
     paths:
@@ -100,19 +89,6 @@
     - /var/cache/yum
     - /var/lib/misc/random-seed
     - /var/lib/systemd/random-seed
-    - /var/log/audit/audit.log
-    - /var/log/auth.log
-    - /var/log/dmesg
-    - /var/log/faillog
-    - /var/log/kern.log
-    - /var/log/installer
-    - /var/log/lastlog
-    - /var/log/maillog
-    - /var/log/messages
-    - /var/log/secure
-    - /var/log/syslog
-    - /var/log/tallylog
-    - /var/log/wtmp
 
 - name: cleanup | Zeroing Out Free Space to Save Space in the Final Image
   shell: |
