@@ -12,6 +12,7 @@ supported.
 | Distro   | Version   | Template                       | Builder                                                                            |
 | -------- | :-------- | :----------------------------- | :--------------------------------------------------------------------------------- |
 | `CentOS` | `7`       | `CentOS/centos7.json`          | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
+| `CentOS` | `8`       | `CentOS/centos8.json`          | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |
 | `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `qemu`, `proxmox`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vsphere-iso` |

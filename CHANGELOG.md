@@ -1,3 +1,50 @@
+commit 6a3ce00f8d785cf77539949f4ca3101c8ce2b439
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 10:47:56 2020 -0400
+
+    Removed lingering packages that aren't needed in base image
+
+commit 8422fcdce68757a1580ad7d0e0cd5db9ac85bc8d
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 02:18:43 2020 -0400
+
+    Playbooks tweaks after further testing
+
+commit a69ff3299a22b399c021db59b1d6451771ed92a3
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Aug 25 22:00:54 2020 -0400
+
+    Fixed boot wait time for QEMU
+    
+    - Ubuntu Focal boot wait time needs to be on point for each builder
+
+commit 9ba5d23f65568fc83b1528cea171c688ef597401
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Aug 25 19:45:51 2020 -0400
+
+    Changed CentOS to sata from scsi
+    
+    This is an issue that has existed for a while. I
+    wanted to test this using SCSI again, but....
+    Will need to change to virtio for Proxmox/QEMU. PVSCSI for vSphere.
+
+commit 0d077663b46b5d41afd91cb1f50923481eca3a72
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Aug 25 19:43:07 2020 -0400
+
+    Fixed typo in when condition to check version
+
+commit 4443b3d61d0d3a10be26f0243d88ba79a5f29e7a
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Tue Aug 25 17:29:45 2020 -0400
+
+    Changes for virtualbox-ovf builder
+    
+    - This is the first phase into a simplistic way to use this builder
+    - When building for virtualbox-iso and on macOS/Linux, a symlink is created
+    which points to the latest build
+    - Windows support will need to be added if needed
+
 commit 773c3aaaa41a48f702998663f453120fcf96cd22
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Tue Aug 25 17:26:57 2020 -0400
