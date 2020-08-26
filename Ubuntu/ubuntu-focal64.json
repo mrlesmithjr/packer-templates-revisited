@@ -60,7 +60,7 @@
         "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu/",
         "<enter>"
       ],
-      "boot_wait": "{{ user `boot_wait` }}",
+      "boot_wait": "2s",
       "communicator": "{{ user `communicator` }}",
       "cpus": "{{ user `cpus` }}",
       "disk_cache": "{{ user `qemu_disk_cache` }}",
