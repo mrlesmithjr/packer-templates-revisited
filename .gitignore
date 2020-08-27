@@ -2,9 +2,10 @@
 .DS_STORE
 .vagrant/
 *.box
-*.iso
+*.iso*
 output-*
-packer_cache/
+packer_cache/*
+!packer_cache/.gitkeep
 packer-manifest.json
 private_vars.json
 scripts/
