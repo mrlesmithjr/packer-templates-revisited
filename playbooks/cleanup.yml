@@ -49,6 +49,15 @@
     - ansible_os_family == "RedHat"
     - ansible_distribution != "Fedora"
 
+- name: cleanup | Cleaning Up DNF
+  command: "{{ item }}"
+  become: true
+  loop:
+    - dnf clean all
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution == "Fedora"
+
 - name: cleanup | Finding Temp Files to Clean
   find:
     paths:

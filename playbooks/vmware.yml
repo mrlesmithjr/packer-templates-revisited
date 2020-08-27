@@ -12,3 +12,11 @@
     state: present
   become: true
   when: desktop|bool
+
+- name: vmware | Enabling and Restarting vmtoolsd.service
+  service:
+    name: vmtoolsd.service
+    enabled: true
+    state: restarted
+  become: true
+  when: ansible_os_family == "RedHat"

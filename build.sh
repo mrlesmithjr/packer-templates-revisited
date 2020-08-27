@@ -11,6 +11,9 @@ cd "$PROJ_ROOT/Debian"
 packer validate -syntax-only debian-buster64.json
 packer validate -syntax-only debian-stretch64.json
 
+cd "$PROJ_ROOT/Fedora"
+packer validate -syntax-only fedora32.json
+
 cd "$PROJ_ROOT/Ubuntu"
 packer validate -syntax-only ubuntu-bionic64.json
 packer validate -syntax-only ubuntu-xenial64.json
@@ -28,6 +31,10 @@ packer build -except vsphere-iso -except qemu -except virtualbox-ovf -except vmw
 packer build -only qemu debian-buster64.json
 packer build -except vsphere-iso -except qemu -except virtualbox-ovf -except vmware-vmx debian-stretch64.json
 packer build -only qemu debian-stretch64.json
+
+cd "$PROJ_ROOT/Fedora"
+packer build -except vsphere-iso -except qemu -except virtualbox-ovf -except vmware-vmx fedora32.json
+packer build -only qemu fedora32.json
 
 cd "$PROJ_ROOT/Ubuntu"
 packer build -except vsphere-iso -except qemu -except virtualbox-ovf -except vmware-vmx ubuntu-bionic64.json

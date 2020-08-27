@@ -9,7 +9,7 @@
   when: ansible_os_family == "Debian"
 
 - name: virtualbox | Installing Pre-Reqs
-  yum:
+  package:
     name:
       - "@Development tools"
       - "kernel-devel-{{ ansible_kernel }}"
@@ -21,9 +21,7 @@
       - perl
     state: present
   become: true
-  when:
-    - ansible_os_family == "RedHat"
-    - ansible_distribution != "Fedora"
+  when: ansible_os_family == "RedHat"
 
 - name: virtualbox | Mounting VirtualBox Additions ISO
   mount:
