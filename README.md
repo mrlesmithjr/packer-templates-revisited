@@ -11,13 +11,17 @@ supported.
 
 |  Distro  |  Version  |            Template            |                                                   Builder                                                   |
 | :------: | :-------: | :----------------------------: | :---------------------------------------------------------------------------------------------------------: |
-| `CentOS` |    `7`    |     `CentOS/centos7.json`      | `qemu`, `proxmox`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `CentOS` |    `8`    |     `CentOS/centos8.json`      | `qemu`, `proxmox`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `qemu`, `proxmox`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `qemu`, `proxmox`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `qemu`, `proxmox`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Ubuntu` |  `Focal`  |  `Ubuntu/ubuntu-focal64.json`  | `qemu`, `proxmox`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Ubuntu` | `Xenial`  | `Ubuntu/ubuntu-xenial64.json`  | `qemu`, `proxmox`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `CentOS` |    `7`    |     `CentOS/centos7.json`      | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `CentOS` |    `8`    |     `CentOS/centos8.json`      | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` |  `Focal`  |  `Ubuntu/ubuntu-focal64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` | `Xenial`  | `Ubuntu/ubuntu-xenial64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+
+> NOTE: All distros are built with `username: packer` and `password: packer`. And
+> for Vagrant builds, they will also have the normal `username: vagrant` and
+> `password: vagrant`.
 
 ## Usage
 
@@ -52,6 +56,8 @@ export PROXMOX_PASSWORD=packer
 export PROXMOX_URL=https://192.168.2.22:8006/api2/json
 export PROXMOX_USER=root@pam
 ```
+
+> NOTE: All Proxmox builds have `cloud-init` installed and ready for usage.
 
 ### qemu
 
