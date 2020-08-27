@@ -1,3 +1,27 @@
+commit 02dcc4ba73a7d1f79ea3917b356d0b892a29154c
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 19:44:47 2020 -0400
+
+    Tweaked file/folder cleanup
+    
+    Was too agressive before and causing builders to hang
+
+commit 8dd8cdaf5cd649df3ba45713777d27a504d2d1f0
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 19:44:02 2020 -0400
+
+    Added vmware-vmx builder
+    
+    This will allow us to test only
+
+commit 720932079abebde8b8a85700433a7bd152594075
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 12:26:45 2020 -0400
+
+    Added note for virtualbox-ovf builder
+    
+    - Only used for testing
+
 commit c8867394401ece8dff20177fc25d7650d4ea08a0
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Wed Aug 26 12:23:31 2020 -0400

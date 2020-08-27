@@ -69,6 +69,15 @@
       "vm_name": "{{ user `vm_name` }}"
     },
     {
+      "communicator": "{{ user `communicator` }}",
+      "output_dir": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "provider": "virtualbox",
+      "source_path": "{{ user `vagrant_box_tag` }}",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "type": "vagrant"
+    },
+    {
       "boot_command": [
         "<tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos/ks.8.cfg<enter><wait>"
       ],
