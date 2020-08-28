@@ -1,10 +1,36 @@
-commit 8d9bca4893dfd2752686742db2d3916c6500e1d0
+commit 72148fc7d56f6159e0347db9e74e95c76a8b240f
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Fri Aug 28 00:29:33 2020 -0400
+
+    Updated Distros supported
+    
+    - Added missing Ubuntu Bionic desktop
+    - Added column for server/desktop
+
+commit 01891bc15957c3fda1546ffcd3d2ad9b338a85eb
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Fri Aug 28 00:25:28 2020 -0400
+
+    Added Ubuntu Bionic Desktop
+    
+    This adds Ubuntu Bionic Desktop support
+
+commit aa65b32ec176c49297408446cedaa4ffd1d0c798
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Thu Aug 27 23:01:04 2020 -0400
 
     Initial Ubuntu Bionic desktop template
     
     This will be tweaked until functional
+
+commit 272936c85d2b4fe876b7d0206053275542560b27
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Thu Aug 27 23:34:43 2020 -0400
+
+    Changed timestamp to user var for consistency
+    
+    Because we need to ensure that the timestamp is consistent across
+    stages, we are setting it as a user var.
 
 commit 1d731b8ded320ab602cb19502077a2c39173216b
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>

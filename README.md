@@ -20,6 +20,7 @@ supported.
 | `Ubuntu` | `Bionic`  |     Server     |     `Ubuntu/ubuntu-bionic64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Ubuntu` | `Bionic`  |    Desktop     | `Ubuntu/ubuntu-bionic64-desktop.json` | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Ubuntu` |  `Focal`  |     Server     |     `Ubuntu/ubuntu-focal64.json`      | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` |  `Focal`  |    Desktop     | `Ubuntu/ubuntu-focal64-desktop.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Ubuntu` | `Xenial`  |     Server     |     `Ubuntu/ubuntu-xenial64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 
 > NOTE: All distros are built with `username: packer` and `password: packer`. And

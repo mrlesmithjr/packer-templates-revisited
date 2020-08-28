@@ -22,6 +22,7 @@ packer validate -syntax-only ubuntu-bionic64.json
 packer validate -syntax-only ubuntu-bionic64-desktop.json
 packer validate -syntax-only ubuntu-xenial64.json
 packer validate -syntax-only ubuntu-focal64.json
+packer validate -syntax-only ubuntu-focal64-desktop.json
 
 cd "$PROJ_ROOT/CentOS"
 packer build -only proxmox -only virtualbox-iso -only vmware-iso centos7.json
@@ -55,5 +56,6 @@ packer build -only qemu ubuntu-focal64.json
 
 cd "$PROJ_ROOT/Ubuntu"
 packer build -only virtualbox-iso -only vmware-iso ubuntu-bionic64-desktop.json
+packer build -only virtualbox-iso -only vmware-iso ubuntu-focal64-desktop.json
 
 ## End of Desktops ##
