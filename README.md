@@ -15,6 +15,7 @@ supported.
 | `CentOS` |    `8`    |     `CentOS/centos8.json`      | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Fedora` |   `31`    |     `Fedora/fedora31.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Fedora` |   `32`    |     `Fedora/fedora32.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Ubuntu` |  `Focal`  |  `Ubuntu/ubuntu-focal64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |

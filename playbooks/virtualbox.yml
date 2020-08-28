@@ -12,8 +12,6 @@
   package:
     name:
       - "@Development tools"
-      - "kernel-devel-{{ ansible_kernel }}"
-      - "kernel-headers-{{ ansible_kernel }}"
       - bzip2
       - dkms
       - gcc
@@ -21,6 +19,40 @@
       - perl
     state: present
   become: true
+  when: ansible_os_family == "RedHat"
+
+- name: virtualbox | Installing kernel-devel-{{ ansible_kernel }}
+  block:
+    - name: virtualbox | Attempting kernel-devel-{{ ansible_kernel }}
+      package:
+        name: "kernel-devel-{{ ansible_kernel }}"
+        state: present
+      become: true
+
+  rescue:
+    - name: virtualbox | Rescuing with kernel-devel
+      package:
+        name: kernel-devel
+        state: present
+      become: true
+
+  when: ansible_os_family == "RedHat"
+
+- name: virtualbox | Installing kernel-headers-{{ ansible_kernel }}
+  block:
+    - name: virtualbox | Attempting kernel-headers-{{ ansible_kernel }}
+      package:
+        name: "kernel-headers-{{ ansible_kernel }}"
+        state: present
+      become: true
+
+  rescue:
+    - name: virtualbox | Rescuing with kernel-headers
+      package:
+        name: kernel-headers
+        state: present
+      become: true
+
   when: ansible_os_family == "RedHat"
 
 - name: virtualbox | Mounting VirtualBox Additions ISO
