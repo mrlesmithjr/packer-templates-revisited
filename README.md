@@ -9,17 +9,18 @@ format. Hence this project.
 The following table represents all distros including versions and builders
 supported.
 
-|  Distro  |  Version  |            Template            |                                                   Builder                                                   |
-| :------: | :-------: | :----------------------------: | :---------------------------------------------------------------------------------------------------------: |
-| `CentOS` |    `7`    |     `CentOS/centos7.json`      | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `CentOS` |    `8`    |     `CentOS/centos8.json`      | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Debian` | `Buster`  | `Debian/debian-buster64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Debian` | `Stretch` | `Debian/debian-stretch64.json` | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Fedora` |   `31`    |     `Fedora/fedora31.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Fedora` |   `32`    |     `Fedora/fedora32.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Ubuntu` | `Bionic`  | `Ubuntu/ubuntu-bionic64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Ubuntu` |  `Focal`  |  `Ubuntu/ubuntu-focal64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
-| `Ubuntu` | `Xenial`  | `Ubuntu/ubuntu-xenial64.json`  | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+|  Distro  |  Version  | Server/Desktop |               Template                |                                                   Builder                                                   |
+| :------: | :-------: | :------------: | :-----------------------------------: | :---------------------------------------------------------------------------------------------------------: |
+| `CentOS` |    `7`    |     Server     |         `CentOS/centos7.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `CentOS` |    `8`    |     Server     |         `CentOS/centos8.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Debian` | `Buster`  |     Server     |     `Debian/debian-buster64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Debian` | `Stretch` |     Server     |    `Debian/debian-stretch64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Fedora` |   `31`    |     Server     |        `Fedora/fedora31.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Fedora` |   `32`    |     Server     |        `Fedora/fedora32.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` | `Bionic`  |     Server     |     `Ubuntu/ubuntu-bionic64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` | `Bionic`  |    Desktop     | `Ubuntu/ubuntu-bionic64-desktop.json` | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` |  `Focal`  |     Server     |     `Ubuntu/ubuntu-focal64.json`      | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `Ubuntu` | `Xenial`  |     Server     |     `Ubuntu/ubuntu-xenial64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 
 > NOTE: All distros are built with `username: packer` and `password: packer`. And
 > for Vagrant builds, they will also have the normal `username: vagrant` and
