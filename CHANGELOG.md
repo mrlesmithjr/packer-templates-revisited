@@ -1,3 +1,66 @@
+commit 8d9bca4893dfd2752686742db2d3916c6500e1d0
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Thu Aug 27 23:01:04 2020 -0400
+
+    Initial Ubuntu Bionic desktop template
+    
+    This will be tweaked until functional
+
+commit 1d731b8ded320ab602cb19502077a2c39173216b
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Thu Aug 27 21:36:56 2020 -0400
+
+    Added Fedora 31 support
+    
+    There were several issues uncovered while adding Fedora 31
+    - Ansible tasks to install kernel-devel/headers
+    - Build scripts were incorrect
+    - Kickstart script needed to be tweaked
+
+commit 448bcbf4837efe9b30a9fef95853ae0c894a07ca
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Thu Aug 27 10:20:58 2020 -0400
+
+    Updated script and playbooks after Fedora 32 support
+    
+    - Now that Fedora has been added, the playbooks are being optimized
+
+commit 7d3c2d645d11e912e346b13de4734f002b7a9a50
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Thu Aug 27 10:19:56 2020 -0400
+
+    Added Fedora 32 support
+
+commit 44a8b9331bd67b84af5d5ef019a00fd1f496b8dc
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Thu Aug 27 00:19:52 2020 -0400
+
+    Updated Project info
+
+commit 42edee14ae3c6fa87c18a64956b3709bb3f3e142
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 23:27:35 2020 -0400
+
+    Added build script
+    
+    - This is the script that I use to do builds
+
+commit ba8bc8e8daa1e7383e2b45f60bce55aa7704439f
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 22:54:50 2020 -0400
+
+    Added symlinks to proj root for packer_cache
+    
+    This will allow for a centralized Packer Cache, etc.
+
+commit 5fd5abc134ad93cba336e5861d2f41b96affe10e
+Author: Larry Smith Jr <mrlesmithjr@gmail.com>
+Date:   Wed Aug 26 20:12:49 2020 -0400
+
+    Added Vagrant builder support
+    
+    This will initially be used just for testing.
+
 commit 02dcc4ba73a7d1f79ea3917b356d0b892a29154c
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Wed Aug 26 19:44:47 2020 -0400

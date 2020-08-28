@@ -3,6 +3,8 @@ set -e
 
 PROJ_ROOT="$(PWD)"
 
+## Servers ##
+
 cd "$PROJ_ROOT/CentOS"
 packer validate -syntax-only centos7.json
 packer validate -syntax-only centos8.json
@@ -17,6 +19,7 @@ packer validate -syntax-only fedora32.json
 
 cd "$PROJ_ROOT/Ubuntu"
 packer validate -syntax-only ubuntu-bionic64.json
+packer validate -syntax-only ubuntu-bionic64-desktop.json
 packer validate -syntax-only ubuntu-xenial64.json
 packer validate -syntax-only ubuntu-focal64.json
 
@@ -45,3 +48,12 @@ packer build -only proxmox -only virtualbox-iso -only vmware-iso ubuntu-xenial64
 packer build -only qemu ubuntu-xenial64.json
 packer build -only proxmox -only virtualbox-iso -only vmware-iso ubuntu-focal64.json
 packer build -only qemu ubuntu-focal64.json
+
+## End of Servers ##
+
+## Desktops ##
+
+cd "$PROJ_ROOT/Ubuntu"
+packer build -only virtualbox-iso -only vmware-iso ubuntu-bionic64-desktop.json
+
+## End of Desktops ##

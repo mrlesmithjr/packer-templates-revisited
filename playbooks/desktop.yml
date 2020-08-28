@@ -12,3 +12,47 @@
     state: touch
   become: true
   when: packer_builder_type in ["vmware-iso", "vsphere-ovf"]
+
+- name: desktop | Installing ubuntu-desktop
+  apt:
+    name: ubuntu-desktop
+    install_recommends: false
+    state: present
+  become: true
+  when: ansible_distribution == "Ubuntu"
+
+- name: desktop | Ensuring /etc/gdm3 Exists
+  file:
+    path: /etc/gdm3
+    state: directory
+  become: true
+  when:
+    - ansible_distribution == "Ubuntu"
+    - packer_builder_type not in ["proxmox", "vsphere-iso"]
+
+- name: desktop | Configuring GDM3 Auto Login
+  copy:
+    content: |
+      [daemon]
+      # Enabling automatic login
+      AutomaticLoginEnable=True
+      AutomaticLogin=vagrant
+
+      [security]
+
+      [xdmcp]
+
+      [chooser]
+
+      [debug]
+    dest: /etc/gdm3/custom.conf
+    mode: u=rw,g=r,o=r
+  become: true
+  when:
+    - ansible_distribution == "Ubuntu"
+    - packer_builder_type not in ["proxmox", "vsphere-iso"]
+
+- name: desktop | Fixing Gnome-Terminal
+  command: update-locale LANG="en_US.UTF-8" LANGUAGE
+  become: true
+  when: ansible_distribution == "Ubuntu"
