@@ -70,7 +70,7 @@
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_url": "{{ user `iso_url` }}",
       "memory": "{{ user `memory` }}",
-      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ user `timestamp` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_timeout": "{{ user `ssh_timeout` }}",
@@ -80,7 +80,7 @@
     },
     {
       "communicator": "{{ user `communicator` }}",
-      "output_dir": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "output_dir": "output-{{ user `vm_name` }}-{{ build_type }}-{{ user `timestamp` }}",
       "provider": "virtualbox",
       "source_path": "{{ user `vagrant_box_tag` }}",
       "ssh_password": "{{ user `ssh_password` }}",
@@ -107,7 +107,7 @@
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_url": "{{ user `iso_url` }}",
       "memory": "{{ user `memory` }}",
-      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ user `timestamp` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_timeout": "{{ user `ssh_timeout` }}",
@@ -136,7 +136,7 @@
       "iso_checksum": "{{ user `iso_checksum` }}",
       "iso_url": "{{ user `iso_url` }}",
       "memory": "{{ user `memory` }}",
-      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ user `timestamp` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_timeout": "{{ user `ssh_timeout` }}",
@@ -198,7 +198,7 @@
       "boot_wait": "{{ user `boot_wait` }}",
       "communicator": "{{ user `communicator` }}",
       "headless": "{{ user `headless` }}",
-      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ user `timestamp` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
       "source_path": "output-{{ user `vm_name` }}-virtualbox-iso-latest/{{ user `vm_name` }}.ovf",
       "ssh_password": "{{ user `ssh_password` }}",
@@ -210,7 +210,7 @@
       "boot_wait": "{{ user `boot_wait` }}",
       "communicator": "{{ user `communicator` }}",
       "headless": "{{ user `headless` }}",
-      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }}",
+      "output_directory": "output-{{ user `vm_name` }}-{{ build_type }}-{{ user `timestamp` }}",
       "shutdown_command": "{{ user `shutdown_command` }}",
       "source_path": "output-{{ user `vm_name` }}-vmware-iso-latest/{{ user `vm_name` }}.vmx",
       "ssh_password": "{{ user `ssh_password` }}",
@@ -224,7 +224,7 @@
       {
         "keep_input_artifact": true,
         "only": ["qemu", "virtualbox-iso", "vmware-iso"],
-        "output": "{{ user `vm_name` }}-{{ .Provider }}-{{ timestamp }}.box",
+        "output": "{{ user `vm_name` }}-{{ .Provider }}-{{ user `timestamp` }}.box",
         "type": "vagrant"
       },
       {
@@ -232,14 +232,14 @@
         "box_tag": "{{ user `vagrant_box_tag` }}",
         "only": ["qemu", "virtualbox-iso", "vmware-iso"],
         "type": "vagrant-cloud",
-        "version": "{{ timestamp }}"
+        "version": "{{ user `timestamp` }}"
       },
       {
         "type": "manifest"
       },
       {
         "inline": [
-          "ln -nfs {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-{{ timestamp }} {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-latest"
+          "ln -nfs {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-{{ user `timestamp` }} {{ template_dir }}/output-{{ user `vm_name` }}-{{ build_type }}-latest"
         ],
         "only": ["virtualbox-iso", "vmware-iso"],
         "only_on": ["darwin", "linux"],
@@ -282,6 +282,7 @@
     "ssh_password": "packer",
     "ssh_timeout": "60m",
     "ssh_username": "packer",
+    "timestamp": "{{ timestamp }}",
     "vagrant_box_tag": "{{ env `VAGRANT_CLOUD_USER` }}/stretch64",
     "vagrant_cloud_token": "{{ env `VAGRANT_CLOUD_TOKEN` }}",
     "vm_name": "debian-stretch64",
