@@ -3,6 +3,7 @@
   file:
     path: /etc/virtualbox_desktop
     state: touch
+    mode: u=rw,g=r,o=r
   become: true
   when: packer_builder_type in ["virtualbox-iso", "virtualbox-ovf"]
 
@@ -10,6 +11,7 @@
   file:
     path: /etc/vmware_desktop
     state: touch
+    mode: u=rw,g=r,o=r
   become: true
   when: packer_builder_type in ["vmware-iso", "vsphere-ovf"]
 
@@ -25,6 +27,7 @@
   file:
     path: /etc/gdm3
     state: directory
+    mode: u=rwx,g=rx,o=rx
   become: true
   when:
     - ansible_distribution == "Ubuntu"
@@ -56,3 +59,12 @@
   command: update-locale LANG="en_US.UTF-8" LANGUAGE
   become: true
   when: ansible_distribution == "Ubuntu"
+
+- name: desktop | Fixing VMSVGA Display Driver
+  apt:
+    name: xserver-xorg-video-vmware
+    state: present
+  become: true
+  when:
+    - ansible_os_family == "Debian"
+    - packer_builder_type in ["virtualbox-iso", "virtualbox-ovf"]
