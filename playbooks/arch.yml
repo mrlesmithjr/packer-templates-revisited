@@ -1,0 +1,7 @@
+---
+- name: arch | Uninstall qemu-guest-agent
+  pacman:
+    name: qemu-guest-agent
+    state: absent
+  become: true
+  when: packer_builder_type not in ["proxmox", "qemu"]

@@ -25,7 +25,7 @@
     shell: /bin/bash
     state: present
   become: true
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family in ["Archlinux", "RedHat"]
 
 - name: vagrant | Adding Vagrant Public Key
   authorized_key:
@@ -50,4 +50,4 @@
     validate: visudo -cf %s
     state: present
   become: true
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family in ["Archlinux", "RedHat"]

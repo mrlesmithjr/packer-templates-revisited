@@ -63,11 +63,13 @@
     state: mounted
     fstype: iso9660
   become: true
+  when: ansible_os_family not in ["Archlinux"]
 
 - name: virtualbox | Installing VirtualBox Additions
   shell: sh /mnt/virtualbox/VBoxLinuxAdditions.run
   become: true
   failed_when: false
+  when: ansible_os_family not in ["Archlinux"]
 
 - name: virtualbox | Unmounting VirtualBox Additions ISO
   mount:
@@ -75,9 +77,19 @@
     state: absent
     fstype: iso9660
   become: true
+  when: ansible_os_family not in ["Archlinux"]
 
 - name: virtualbox | Removing /home/{{ ansible_user }}/VBoxGuestAdditions.iso
   file:
     path: "/home/{{ ansible_user }}/VBoxGuestAdditions.iso"
     state: absent
   become: true
+  when: ansible_os_family not in ["Archlinux"]
+
+- name: virtualbox | Installing VirtualBox Guest Utils
+  pacman:
+    name:
+      - linux-headers
+      - virtualbox-guest-utils
+  become: true
+  when: ansible_os_family == "Archlinux"

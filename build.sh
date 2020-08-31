@@ -3,7 +3,8 @@ set -e
 
 PROJ_ROOT="$(PWD)"
 
-## Servers ##
+cd "$PROJ_ROOT/Arch"
+packer validate -syntax-only arch.json
 
 cd "$PROJ_ROOT/CentOS"
 packer validate -syntax-only centos7.json
@@ -23,6 +24,12 @@ packer validate -syntax-only ubuntu-bionic64-desktop.json
 packer validate -syntax-only ubuntu-xenial64.json
 packer validate -syntax-only ubuntu-focal64.json
 packer validate -syntax-only ubuntu-focal64-desktop.json
+
+## Servers ##
+
+cd "$PROJ_ROOT/Arch"
+packer build -only proxmox -only virtualbox-iso arch.json
+packer build -only qemu arch.json
 
 cd "$PROJ_ROOT/CentOS"
 packer build -only proxmox -only virtualbox-iso -only vmware-iso centos7.json

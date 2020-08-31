@@ -11,6 +11,7 @@ supported.
 
 |  Distro  |  Version  | Server/Desktop |               Template                |                                                   Builder                                                   |
 | :------: | :-------: | :------------: | :-----------------------------------: | :---------------------------------------------------------------------------------------------------------: |
+|  `Arch`  | `Latest`  |     Server     |           `Arch/arch.json`            |                      `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`                       |
 | `CentOS` |    `7`    |     Server     |         `CentOS/centos7.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `CentOS` |    `8`    |     Server     |         `CentOS/centos8.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Debian` | `Buster`  |     Server     |     `Debian/debian-buster64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |

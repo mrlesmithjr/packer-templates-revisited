@@ -1,4 +1,11 @@
 ---
+- name: vmware | Installing Pre-Reqs
+  pacman:
+    name:
+      - linux-headers
+  become: true
+  when: ansible_os_family == "Archlinux"
+
 - name: vmware | Installing open-vm-tools
   package:
     name: open-vm-tools
@@ -19,4 +26,4 @@
     enabled: true
     state: restarted
   become: true
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family in ["Archlinux", "RedHat"]

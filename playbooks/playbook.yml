@@ -1,6 +1,10 @@
 ---
 - hosts: default
   tasks:
+    - name: Debug Ansible OS Family
+      debug:
+        var: ansible_os_family
+
     - name: Debug Packer Builder Type
       debug:
         var: packer_builder_type
@@ -20,6 +24,10 @@
 
     - name: Base Tasks
       include_tasks: base.yml
+
+    - name: Archlinux Specific Task
+      include_tasks: arch.yml
+      when: ansible_os_family == "Archlinux"
 
     - name: Debian Specific Tasks
       include_tasks: debian.yml
