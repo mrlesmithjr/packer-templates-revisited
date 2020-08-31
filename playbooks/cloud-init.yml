@@ -54,3 +54,12 @@
         - /var/lib/cloud/instances
         - /var/log/cloud-init.log
         - /var/log/cloud-init-output.log
+
+- name: cloud-init | Enabling cloud-init.service
+  service:
+    name: cloud-init.service
+    enabled: true
+  become: true
+  when:
+    - ansible_os_family in ["Archlinux"]
+    - packer_builder_type in ["proxmox"]
