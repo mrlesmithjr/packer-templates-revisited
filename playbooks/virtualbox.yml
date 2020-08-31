@@ -84,7 +84,6 @@
     path: "/home/{{ ansible_user }}/VBoxGuestAdditions.iso"
     state: absent
   become: true
-  when: ansible_os_family not in ["Archlinux"]
 
 - name: virtualbox | Installing VirtualBox Guest Utils
   pacman:
