@@ -15,6 +15,21 @@
   become: true
   when: packer_builder_type in ["vmware-iso", "vsphere-ovf"]
 
+- name: desktop | Installing Desktop Packages
+  package:
+    name:
+      - "@X Window System"
+      - gnome-classic-session
+      - gnome-terminal
+      - nautilus-open-terminal
+      - control-center
+      - liberation-mono-fonts
+    state: present
+  become: true
+  when:
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version is version('7', '==')
+
 - name: desktop | Installing ubuntu-desktop
   apt:
     name: ubuntu-desktop
@@ -22,6 +37,27 @@
     state: present
   become: true
   when: ansible_distribution == "Ubuntu"
+
+- name: desktop | Enabling GUI
+  file:
+    dest: /etc/systemd/system/default.target
+    force: true
+    src: /lib/systemd/system/runlevel5.target
+    state: link
+  become: true
+  when:
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version is version('7', '==')
+
+- name: desktop | Ensuring /etc/gdm Exists
+  file:
+    path: /etc/gdm
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+  become: true
+  when:
+    - ansible_distribution == "CentOS"
+    - packer_builder_type not in ["proxmox", "vsphere-iso"]
 
 - name: desktop | Ensuring /etc/gdm3 Exists
   file:
@@ -31,6 +67,28 @@
   become: true
   when:
     - ansible_distribution == "Ubuntu"
+    - packer_builder_type not in ["proxmox", "vsphere-iso"]
+
+- name: desktop | Configuring GDM Auto Login
+  copy:
+    content: |
+      [daemon]
+      # Enabling automatic login
+      AutomaticLoginEnable=True
+      AutomaticLogin=vagrant
+
+      [security]
+
+      [xdmcp]
+
+      [chooser]
+
+      [debug]
+    dest: /etc/gdm/custom.conf
+    mode: u=rw,g=r,o=r
+  become: true
+  when:
+    - ansible_distribution == "CentOS"
     - packer_builder_type not in ["proxmox", "vsphere-iso"]
 
 - name: desktop | Configuring GDM3 Auto Login

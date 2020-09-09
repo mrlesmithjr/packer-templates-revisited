@@ -8,6 +8,7 @@ packer validate -syntax-only arch.json
 
 cd "$PROJ_ROOT/CentOS"
 packer validate -syntax-only centos7.json
+packer validate -syntax-only centos7-desktop.json
 packer validate -syntax-only centos8.json
 
 cd "$PROJ_ROOT/Debian"
@@ -60,6 +61,9 @@ packer build -only qemu ubuntu-focal64.json
 ## End of Servers ##
 
 ## Desktops ##
+
+cd "$PROJ_ROOT/CentOS"
+packer build -only virtualbox-iso -only vmware-iso centos7-desktop.json
 
 cd "$PROJ_ROOT/Ubuntu"
 packer build -only virtualbox-iso -only vmware-iso ubuntu-bionic64-desktop.json

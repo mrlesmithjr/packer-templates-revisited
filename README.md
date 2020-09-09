@@ -13,6 +13,7 @@ supported.
 | :------: | :-------: | :------------: | :-----------------------------------: | :---------------------------------------------------------------------------------------------------------: |
 |  `Arch`  | `Latest`  |     Server     |           `Arch/arch.json`            |                      `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`                       |
 | `CentOS` |    `7`    |     Server     |         `CentOS/centos7.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
+| `CentOS` |    `7`    |    Desktop     |     `CentOS/centos7-desktop.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `CentOS` |    `8`    |     Server     |         `CentOS/centos8.json`         | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Debian` | `Buster`  |     Server     |     `Debian/debian-buster64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
 | `Debian` | `Stretch` |     Server     |    `Debian/debian-stretch64.json`     | `proxmox`, `qemu`, `vagrant`, `virtualbox-iso`, `virtualbox-ovf`, `vmware-iso`, `vmware-vmx`, `vsphere-iso` |
