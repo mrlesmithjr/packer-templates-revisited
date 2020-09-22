@@ -3,6 +3,7 @@ name: default-workflow
 on: ["push"]
 jobs:
   packer:
+    runs-on: ubuntu-latest
     name: packer
     steps:
       - name: Checkout Repo
