@@ -3,8 +3,23 @@ name: default-workflow
 on: ["push"]
 jobs:
   packer:
-    runs-on: ubuntu-latest
     name: packer
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        distro:
+          # - Arch
+          # - CentOS
+          # - Debian
+          # - Fedora
+          - Ubuntu
+        include:
+          - distro: Ubuntu
+            template:
+              - ubuntu-bionic64
+              - ubuntu-xenial64
+              - ubuntu-focal64
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -24,28 +39,5 @@ jobs:
           packer version
       - name: Packer Validations
         run: |
-          export PROJ_ROOT="$(pwd)"
-
-          cd "$PROJ_ROOT/Arch"
-
-          packer validate -syntax-only arch.json
-
-          cd "$PROJ_ROOT/CentOS"
-          packer validate -syntax-only centos7.json
-          packer validate -syntax-only centos7-desktop.json
-          packer validate -syntax-only centos8.json
-
-          cd "$PROJ_ROOT/Debian"
-          packer validate -syntax-only debian-buster64.json
-          packer validate -syntax-only debian-stretch64.json
-
-          cd "$PROJ_ROOT/Fedora"
-          packer validate -syntax-only fedora31.json
-          packer validate -syntax-only fedora32.json
-
-          cd "$PROJ_ROOT/Ubuntu"
-          packer validate -syntax-only ubuntu-bionic64.json
-          packer validate -syntax-only ubuntu-bionic64-desktop.json
-          packer validate -syntax-only ubuntu-xenial64.json
-          packer validate -syntax-only ubuntu-focal64.json
-          packer validate -syntax-only ubuntu-focal64-desktop.json
+          cd ${{ matrix.distro }}
+          packer validate -syntax-only ${{ matrix.template }}
