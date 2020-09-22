@@ -1,0 +1,11 @@
+---
+name: default-workflow
+on: ["push"]
+jobs:
+  packer:
+    name: packer
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+          with:
+            submodules: recursive
