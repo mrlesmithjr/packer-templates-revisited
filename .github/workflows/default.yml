@@ -34,4 +34,4 @@ jobs:
       - name: Packer Validations
         run: |
           cd ${{ matrix.distro.name }}
-          echo ${{ matrix.distro.template }}
+          for i in ${{ matrix.distro.template }}; do echo $i; done
