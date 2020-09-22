@@ -19,10 +19,11 @@ jobs:
           python -m pip install --upgrade pip pip-tools
           pip-sync requirements.txt requirements-dev.txt
           ansible --version
-      - name: Packer
+      - name: Packer Version
         run: |
           packer version
-
+      - name: Packer Validations
+        run: |
           export PROJ_ROOT="$(pwd)"
 
           cd "$PROJ_ROOT/Arch"
