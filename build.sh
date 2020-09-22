@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-PROJ_ROOT="$(PWD)"
+PROJ_ROOT="$(pwd)"
 
 cd "$PROJ_ROOT/Arch"
 packer validate -syntax-only arch.json

@@ -23,7 +23,7 @@ jobs:
         run: |
           packer version
 
-          export PROJ_ROOT="$(PWD)"
+          export PROJ_ROOT="$(pwd)"
 
           cd "$PROJ_ROOT/Arch"
 
