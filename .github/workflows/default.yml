@@ -9,13 +9,7 @@ jobs:
       fail-fast: true
       matrix:
         distro:
-          # - Arch
-          # - CentOS
-          # - Debian
-          # - Fedora
-          - Ubuntu
-        include:
-          - distro: Ubuntu
+          - name: Ubuntu
             template:
               - ubuntu-bionic64
               - ubuntu-xenial64
@@ -39,5 +33,5 @@ jobs:
           packer version
       - name: Packer Validations
         run: |
-          cd ${{ matrix.distro }}
-          packer validate -syntax-only ${{ matrix.template }}
+          cd ${{ matrix.distro.name }}
+          for i in ${{ matrix.distro.template }}; echo $i; done
