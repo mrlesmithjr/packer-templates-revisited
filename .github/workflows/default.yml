@@ -50,5 +50,5 @@ jobs:
 
       - name: Validate Packer Templates
         run: |
-          cd ${{ matrix.distro }}
-          packer validate -syntax-only ${{ matrix.release }}
+          cd ${{ matrix.packer_distro.distro }}
+          packer validate -syntax-only ${{ matrix.packer_distro.release }}
