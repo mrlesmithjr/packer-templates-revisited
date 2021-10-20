@@ -1,20 +1,23 @@
-name: Test Python Packages
+name: Debian Buster
 
 on:
   push:
     branches-ignore: [main]
     paths:
-      - "requirements-dev.txt"
-      - "requirements.txt"
+      - ".github/workflows/debian-buster64.yml"
+      - "Debian/debian-buster64.json"
   pull_request:
     branches: [develop, main]
     paths:
-      - "requirements-dev.txt"
-      - "requirements.txt"
+      - ".github/workflows/debian-buster64.yml"
+      - "Debian/debian-buster64.json"
 
 jobs:
-  install:
+  build:
     runs-on: macos-10.15
+    env:
+      DISTRO: Debian
+      TEMPLATE: debian-buster64.json
 
     steps:
       - uses: actions/checkout@v2
@@ -38,3 +41,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
           pip install pre-commit
+
+      - name: Validate Ansible Version
+        run: ansible --version
+
+      - name: Validate Packer Version
+        run: packer --version
+
+      - name: Validate VirtualBox Version
+        run: VBoxManage --version
+
+      - name: Validate Packer Template
+        run: |
+          cd $DISTRO
+          packer validate -syntax-only $TEMPLATE
