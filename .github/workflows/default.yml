@@ -1,0 +1,17 @@
+name: Packer Builds
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  packer-build:
+    runs-on: macos-10.15
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Show Packer version
+        run: packer --version
