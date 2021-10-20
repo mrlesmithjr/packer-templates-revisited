@@ -18,6 +18,12 @@ jobs:
     env:
       DISTRO: Debian
       TEMPLATE: debian-buster64.json
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        builder:
+          - virtualbox-iso
 
     steps:
       - uses: actions/checkout@v2
@@ -55,3 +61,11 @@ jobs:
         run: |
           cd $DISTRO
           packer validate -syntax-only $TEMPLATE
+
+      - name: Build Packer Template ${{ matrix.builder }}
+        env:
+          VAGRANT_CLOUD_USER: ${{ secrets.VAGRANT_CLOUD_USER }}
+          VAGRANT_CLOUD_TOKEN: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
+        run: |
+          cd $DISTRO
+          packer build -only ${{ matrix.builder }} $TEMPLATE
