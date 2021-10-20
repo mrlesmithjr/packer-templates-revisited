@@ -7,7 +7,7 @@ on:
     branches: [develop, main]
 
 jobs:
-  install:
+  build:
     runs-on: macos-10.15
 
     steps:
@@ -30,49 +30,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python3 -m venv .venv
-          source .venv/bin/activate
           pip install -r requirements.txt -r requirements-dev.txt
           pip install pre-commit
 
-      - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v2
-        with:
-          name: python-venv
-          path: .venv/
+      - name: Validate Ansible Version
+        run: ansible --version
 
-  validate:
-    needs: install
-    runs-on: macos-10.15
+      - name: Validate Packer Version
+        run: packer --version
 
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: python-venv
-          path: .
-
-      # - uses: actions/checkout@v2
-      #   with:
-      #     submodules: recursive
-
-      # - uses: actions/cache@v2
-      #   with:
-      #     path: ~/Library/Caches/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pip-
-
-      - name: Source Python Virtual Environment
-        run: source .venv/bin/activate
-
-      - name: Show Python Packages
-        run: pip list
-
-      # - name: Validate Ansible Version
-      #   run: ansible --version
-
-      # - name: Validate Packer Version
-      #   run: packer --version
-
-      # - name: Validate VirtualBox Version
-      #   run: VBoxManage --version
+      - name: Validate VirtualBox Version
+        run: VBoxManage --version
