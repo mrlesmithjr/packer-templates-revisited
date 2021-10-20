@@ -1,13 +1,49 @@
 !*
-.DS_STORE
-.vagrant/
+
+### Ansible
+.cache/
+
+### Packer ###
+# Cache objects
+packer_cache/
+
+# Crash log
+crash.log
+
+# For built boxes
 *.box
-*.iso*
-output-*
-packer_cache/*
-!packer_cache/.gitkeep
-packer-manifest.json
-private_vars.json
-scripts/
-Vagrantfile
+
+### Packer Patch ###
+# ignore temporary output files
+output-*/
+
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.log
+
+### Vagrant Patch ###
+*.box
+
+### VirtualEnv ###
+# Virtualenv
+.venv/
 venv/
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
