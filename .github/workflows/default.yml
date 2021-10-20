@@ -14,7 +14,9 @@ jobs:
       matrix:
         packer_distro:
           - distro: Debian
-            release: debian-buster64
+            template: debian-buster64.json
+          - distro: Rocky
+            template: rocky8.json
 
     steps:
       - uses: actions/checkout@v2
@@ -51,4 +53,4 @@ jobs:
       - name: Validate Packer Templates
         run: |
           cd ${{ matrix.packer_distro.distro }}
-          packer validate -syntax-only ${{ matrix.packer_distro.release }}
+          packer validate -syntax-only ${{ matrix.packer_distro.template }}
