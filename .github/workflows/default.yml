@@ -15,8 +15,12 @@ jobs:
         packer_distro:
           - distro: Debian
             template: debian-buster64.json
+          - distro: Fedora
+            template: fedora32.json
           - distro: Rocky
             template: rocky8.json
+          - distro: Ubuntu
+            template: ubuntu-bionic64.json
 
     steps:
       - uses: actions/checkout@v2
