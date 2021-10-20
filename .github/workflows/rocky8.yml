@@ -63,6 +63,9 @@ jobs:
           packer validate -syntax-only $TEMPLATE
 
       - name: Build Packer Template ${{ matrix.builder }}
+        env:
+          VAGRANT_CLOUD_USER: ${{ secrets.VAGRANT_CLOUD_USER }}
+          VAGRANT_CLOUD_TOKEN: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
         run: |
           cd $DISTRO
           packer build -only ${{ matrix.builder }} $TEMPLATE
