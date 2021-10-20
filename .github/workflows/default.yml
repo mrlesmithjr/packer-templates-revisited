@@ -42,12 +42,12 @@ jobs:
         with:
           submodules: recursive
 
-      # - uses: actions/cache@v2
-      #   with:
-      #     path: ~/Library/Caches/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pip-
+      - uses: actions/cache@v2
+        with:
+          path: ~/Library/Caches/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Validate Ansible Version
         run: ansible --version
