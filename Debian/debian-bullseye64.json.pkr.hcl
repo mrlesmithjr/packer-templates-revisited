@@ -407,20 +407,20 @@ build {
   post-processors {
     post-processor "vagrant" {
       keep_input_artifact = true
-      only                = ["qemu", "virtualbox-iso", "vmware-iso"]
-      output              = "${var.vm_name}-<no value>-${local.timestamp}.box"
+      only                = ["qemu.debian", "virtualbox-iso.debian", "vmware-iso.debian"]
+      output              = "${var.vm_name}-${source.type}-${local.timestamp}.box"
     }
     post-processor "vagrant-cloud" {
       access_token = "${var.vagrant_cloud_token}"
       box_tag      = "${var.vagrant_box_tag}"
-      only         = ["qemu", "virtualbox-iso", "vmware-iso"]
+      only         = ["qemu.debian", "virtualbox-iso.debian", "vmware-iso.debian"]
       version      = "${local.timestamp}"
     }
     post-processor "manifest" {
     }
     post-processor "shell-local" {
       inline  = ["ln -nfs ${path.root}/output-${var.vm_name}-${source.type}-${local.timestamp} ${path.root}/output-${var.vm_name}-${source.type}-latest"]
-      only    = ["virtualbox-iso", "vmware-iso"]
+      only    = ["virtualbox-iso.debian", "vmware-iso.debian"]
       only_on = ["darwin", "linux"]
     }
   }
