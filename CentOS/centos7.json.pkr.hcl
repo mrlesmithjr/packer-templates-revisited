@@ -52,12 +52,12 @@ variable "headless" {
 
 variable "iso_checksum" {
   type    = string
-  default = "659691c28a0e672558b003d223f83938f254b39875ee7559d1a4a14c79173193"
+  default = "07b94e6b1a0b0260b94c83d6bb76b26bf7a310dc78d7a9c7432809fb9bc6194a"
 }
 
 variable "iso_url" {
   type    = string
-  default = "http://centos.mirror.constant.com/7/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso"
+  default = "http://atl.mirrors.clouvider.net/CentOS/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso"
 }
 
 variable "memory" {

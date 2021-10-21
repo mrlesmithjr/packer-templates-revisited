@@ -52,12 +52,12 @@ variable "headless" {
 
 variable "iso_checksum" {
   type    = string
-  default = "c67876a5602faa17f68b40ccf2628799b87454aa67700f0f57eec15c6ccdd98c"
+  default = "c79921e24d472144d8f36a0d5f409b12bd016d9d7d022fd703563973ca9c375c"
 }
 
 variable "iso_url" {
   type    = string
-  default = "http://mirror.atl.genesisadaptive.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-boot.iso"
+  default = "http://atl.mirrors.clouvider.net/CentOS/8.4.2105/isos/x86_64/CentOS-8.4.2105-x86_64-boot.iso"
 }
 
 variable "memory" {
