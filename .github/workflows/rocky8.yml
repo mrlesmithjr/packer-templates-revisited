@@ -5,25 +5,25 @@ on:
     branches-ignore: [main]
     paths:
       - ".github/workflows/rocky8.yml"
-      - "Rocky/rocky8.json"
+      - "Rocky/rocky8.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/rocky8.yml"
-      - "Rocky/rocky8.json"
+      - "Rocky/rocky8.json.pkr.hcl"
 
 jobs:
   build:
     runs-on: macos-10.15
     env:
       DISTRO: Rocky
-      TEMPLATE: rocky8.json
+      TEMPLATE: rocky8.json.pkr.hcl
     strategy:
       fail-fast: false
       max-parallel: 4
       matrix:
         builder:
-          - virtualbox-iso
+          - virtualbox-iso.rocky
 
     steps:
       - uses: actions/checkout@v2
