@@ -23,7 +23,7 @@ jobs:
       max-parallel: 4
       matrix:
         builder:
-          - virtualbox-iso
+          - virtualbox-iso.debian
 
     steps:
       - uses: actions/checkout@v2
