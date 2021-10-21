@@ -1,23 +1,23 @@
-name: Ubuntu Bionic
+name: Ubuntu Xenial
 
 on:
   push:
     branches-ignore: [main]
     paths:
-      - ".github/workflows/ubuntu-bionic64.yml"
-      - "Ubuntu/ubuntu-bionic64.json.pkr.hcl"
+      - ".github/workflows/ubuntu-xenial64.yml"
+      - "Ubuntu/ubuntu-xenial64.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
-      - ".github/workflows/ubuntu-bionic64.yml"
-      - "Ubuntu/ubuntu-bionic64.json.pkr.hcl"
+      - ".github/workflows/ubuntu-xenial64.yml"
+      - "Ubuntu/ubuntu-xenial64.json.pkr.hcl"
 
 jobs:
   build:
     runs-on: macos-10.15
     env:
       DISTRO: Ubuntu
-      TEMPLATE: ubuntu-bionic64.json.pkr.hcl
+      TEMPLATE: ubuntu-xenial64.json.pkr.hcl
     strategy:
       fail-fast: false
       max-parallel: 4
