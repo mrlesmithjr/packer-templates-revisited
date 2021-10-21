@@ -5,19 +5,19 @@ on:
     branches-ignore: [main]
     paths:
       - ".github/workflows/debian-stretch64.yml"
-      - "Debian/debian-stretch64.json"
+      - "Debian/debian-stretch64.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/debian-stretch64.yml"
-      - "Debian/debian-stretch64.json"
+      - "Debian/debian-stretch64.json.pkr.hcl"
 
 jobs:
   build:
     runs-on: macos-10.15
     env:
       DISTRO: Debian
-      TEMPLATE: debian-stretch64.json
+      TEMPLATE: debian-stretch64.json.pkr.hcl
     strategy:
       fail-fast: false
       max-parallel: 4
