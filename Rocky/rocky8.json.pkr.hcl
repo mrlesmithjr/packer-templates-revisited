@@ -357,7 +357,7 @@ source "vmware-vmx" "rocky" {
 }
 
 source "vsphere-iso" "rocky" {
-  CPUS                 = "${var.cpus}"
+  CPUs                 = "${var.cpus}"
   RAM                  = "${var.memory}"
   boot_command         = ["<tab><bs><bs><bs><bs><bs>text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/rocky/ks.8.cfg<enter><wait>"]
   boot_wait            = "${var.boot_wait}"
@@ -366,7 +366,7 @@ source "vsphere-iso" "rocky" {
   convert_to_template  = true
   datacenter           = "${var.vsphere_datacenter}"
   datastore            = "${var.vsphere_datastore}"
-  disk_controller_type = "pvscsi"
+  disk_controller_type = ["pvscsi"]
   folder               = "${var.vsphere_folder}"
   guest_os_type        = "centos64Guest"
   http_directory       = "${path.root}/../http"
