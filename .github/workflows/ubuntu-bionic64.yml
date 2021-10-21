@@ -5,11 +5,13 @@ on:
     branches-ignore: [main]
     paths:
       - ".github/workflows/ubuntu-bionic64.yml"
+      - "http/ubuntu/preseed.cfg"
       - "Ubuntu/ubuntu-bionic64.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/ubuntu-bionic64.yml"
+      - "http/ubuntu/preseed.cfg"
       - "Ubuntu/ubuntu-bionic64.json.pkr.hcl"
 
 jobs:

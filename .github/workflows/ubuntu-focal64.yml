@@ -5,11 +5,13 @@ on:
     branches-ignore: [main]
     paths:
       - ".github/workflows/ubuntu-focal64.yml"
+      - "http/ubuntu/user-data"
       - "Ubuntu/ubuntu-focal64.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/ubuntu-focal64.yml"
+      - "http/ubuntu/user-data"
       - "Ubuntu/ubuntu-focal64.json.pkr.hcl"
 
 jobs:
