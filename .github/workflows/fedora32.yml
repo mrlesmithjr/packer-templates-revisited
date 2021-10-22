@@ -5,14 +5,14 @@ on:
     branches-ignore: [main]
     paths:
       - ".github/workflows/fedora32.yml"
-      - "Fedora/fedora32.json"
+      - "Fedora/fedora32.json.pkr.hcl"
       - "http/fedora/ks.cfg"
       - "playbooks/"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/fedora32.yml"
-      - "Fedora/fedora32.json"
+      - "Fedora/fedora32.json.pkr.hcl"
       - "http/fedora/ks.cfg"
       - "playbooks/"
 
@@ -21,13 +21,13 @@ jobs:
     runs-on: macos-10.15
     env:
       DISTRO: Fedora
-      TEMPLATE: fedora32.json
+      TEMPLATE: fedora32.json.pkr.hcl
     strategy:
       fail-fast: false
       max-parallel: 4
       matrix:
         builder:
-          - virtualbox-iso
+          - virtualbox-iso.fedora
 
     steps:
       - uses: actions/checkout@v2
