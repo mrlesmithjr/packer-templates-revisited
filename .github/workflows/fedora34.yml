@@ -1,0 +1,75 @@
+name: Fedora 34
+
+on:
+  push:
+    branches-ignore: [main]
+    paths:
+      - ".github/workflows/fedora34.yml"
+      - "Fedora/fedora34.json.pkr.hcl"
+      - "http/fedora/ks.cfg"
+      - "playbooks/"
+  pull_request:
+    branches: [develop, main]
+    paths:
+      - ".github/workflows/fedora34.yml"
+      - "Fedora/fedora34.json.pkr.hcl"
+      - "http/fedora/ks.cfg"
+      - "playbooks/"
+
+jobs:
+  build:
+    runs-on: macos-10.15
+    env:
+      DISTRO: Fedora
+      TEMPLATE: fedora34.json.pkr.hcl
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        builder:
+          - virtualbox-iso.fedora
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/Library/Caches/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
+          pip install pre-commit
+
+      - name: Validate Ansible Version
+        run: ansible --version
+
+      - name: Validate Packer Version
+        run: packer --version
+
+      - name: Validate VirtualBox Version
+        run: VBoxManage --version
+
+      - name: Validate Packer Template
+        run: |
+          cd $DISTRO
+          packer validate -syntax-only $TEMPLATE
+
+      - name: Build Packer Template ${{ matrix.builder }}
+        env:
+          VAGRANT_CLOUD_USER: ${{ secrets.VAGRANT_CLOUD_USER }}
+          VAGRANT_CLOUD_TOKEN: ${{ secrets.VAGRANT_CLOUD_TOKEN }}
+        run: |
+          cd $DISTRO
+          packer build -only ${{ matrix.builder }} $TEMPLATE
