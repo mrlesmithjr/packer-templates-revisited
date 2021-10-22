@@ -6,12 +6,14 @@ on:
     paths:
       - ".github/workflows/ubuntu-xenial64.yml"
       - "http/ubuntu/preseed.cfg"
+      - "playbooks/"
       - "Ubuntu/ubuntu-xenial64.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/ubuntu-xenial64.yml"
       - "http/ubuntu/preseed.cfg"
+      - "playbooks/"
       - "Ubuntu/ubuntu-xenial64.json.pkr.hcl"
 
 jobs:

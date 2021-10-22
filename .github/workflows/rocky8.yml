@@ -5,11 +5,15 @@ on:
     branches-ignore: [main]
     paths:
       - ".github/workflows/rocky8.yml"
+      - "http/rocky/ks.8.cfg"
+      - "playbooks/"
       - "Rocky/rocky8.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/rocky8.yml"
+      - "http/rocky/ks.8.cfg"
+      - "playbooks/"
       - "Rocky/rocky8.json.pkr.hcl"
 
 jobs:

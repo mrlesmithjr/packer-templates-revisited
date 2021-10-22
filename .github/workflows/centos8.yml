@@ -6,11 +6,15 @@ on:
     paths:
       - ".github/workflows/centos8.yml"
       - "CentOS/centos8.json.pkr.hcl"
+      - "http/centos/ks.8.cfg"
+      - "playbooks/"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/centos8.yml"
       - "CentOS/centos8.json.pkr.hcl"
+      - "http/centos/ks.8.cfg"
+      - "playbooks/"
 
 jobs:
   build:

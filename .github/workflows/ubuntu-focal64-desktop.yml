@@ -6,12 +6,14 @@ on:
     paths:
       - ".github/workflows/ubuntu-focal64-desktop.yml"
       - "http/ubuntu/user-data"
+      - "playbooks/"
       - "Ubuntu/ubuntu-focal64-desktop.json.pkr.hcl"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/ubuntu-focal64-desktop.yml"
       - "http/ubuntu/user-data"
+      - "playbooks/"
       - "Ubuntu/ubuntu-focal64-desktop.json.pkr.hcl"
 
 jobs:

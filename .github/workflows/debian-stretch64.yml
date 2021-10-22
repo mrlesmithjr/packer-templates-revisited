@@ -6,11 +6,15 @@ on:
     paths:
       - ".github/workflows/debian-stretch64.yml"
       - "Debian/debian-stretch64.json.pkr.hcl"
+      - "http/debian/preseed.cfg"
+      - "playbooks/"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/debian-stretch64.yml"
       - "Debian/debian-stretch64.json.pkr.hcl"
+      - "http/debian/preseed.cfg"
+      - "playbooks/"
 
 jobs:
   build:

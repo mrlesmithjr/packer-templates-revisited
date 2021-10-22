@@ -6,11 +6,15 @@ on:
     paths:
       - ".github/workflows/fedora32.yml"
       - "Fedora/fedora32.json"
+      - "http/fedora/ks.cfg"
+      - "playbooks/"
   pull_request:
     branches: [develop, main]
     paths:
       - ".github/workflows/fedora32.yml"
       - "Fedora/fedora32.json"
+      - "http/fedora/ks.cfg"
+      - "playbooks/"
 
 jobs:
   build:
@@ -69,4 +73,3 @@ jobs:
         run: |
           cd $DISTRO
           packer build -only ${{ matrix.builder }} $TEMPLATE
-
