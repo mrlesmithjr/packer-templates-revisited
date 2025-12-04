@@ -15,7 +15,7 @@ crash.log
 
 ### Packer Patch ###
 # ignore temporary output files
-output-*/
+output-*
 
 ### Vagrant ###
 # General
@@ -47,3 +47,5 @@ venv/
 # Ignore all local history of files
 .history
 .ionide
+
+.DS_Store
