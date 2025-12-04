@@ -29,3 +29,36 @@
     dest: /etc/rc.local
     mode: u=rwx,g=rx,o=rx
   become: true
+
+# Fix network interface naming policy issues for Vagrant boxes
+# See: https://wiki.debian.org/NetworkInterfaceNames
+# On VMs, predictable interface names can vary between build and runtime,
+# causing SSH to fail when Vagrant starts the box.
+- name: debian | Remove predictable network interface name files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /etc/systemd/network/50-virtio-kernel-names.link
+    - /etc/systemd/network/99-default.link
+    - /etc/udev/rules.d/70-persistent-net.rules
+    - /lib/systemd/network/99-default.link
+  become: true
+  ignore_errors: true
+
+- name: debian | Rebuild initramfs after network config changes
+  ansible.builtin.command: update-initramfs -u
+  become: true
+  changed_when: true
+
+- name: debian | Ensure eth0 is configured for DHCP
+  ansible.builtin.lineinfile:
+    path: /etc/network/interfaces
+    line: "{{ item }}"
+    state: present
+    create: true
+    mode: "0644"
+  loop:
+    - "allow-hotplug eth0"
+    - "iface eth0 inet dhcp"
+  become: true
