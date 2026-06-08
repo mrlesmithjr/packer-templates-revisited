@@ -1,3 +1,17 @@
+## Phase 0: HCL2 Modernization Prep (2026-06-08)
+
+- Created feature branch `feature/hcl2-modernization` for HCL2 conversion work
+- Tagged pre-conversion state as `pre-hcl2-json-archive` so legacy JSON
+  templates remain retrievable; no JSON content was removed
+- Removed 7 dead CI workflow files (`.github/workflows/*.yml`); all referenced
+  the `macos-10.15` GitHub runner which was retired in 2024 and only targeted
+  the `virtualbox-iso` builder; replacement workflows will be added in Phase 4
+- Updated README to reflect HCL2 migration direction, featured use case
+  (VMware vSphere + Content Library with `content_library_destination`), and
+  primary target OS versions (Rocky Linux 9, Ubuntu 22.04 LTS)
+
+---
+
 commit 72148fc7d56f6159e0347db9e74e95c76a8b240f
 Author: Larry Smith Jr <mrlesmithjr@gmail.com>
 Date:   Fri Aug 28 00:29:33 2020 -0400

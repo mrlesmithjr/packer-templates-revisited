@@ -1,8 +1,27 @@
 # Packer Templates Revisited
 
-After many years of maintaining my original [Packer-Templates](https://github.com/mrlesmithjr/packer-templates)
-project. I've decided to bring my Packer templates into an even more consumable
-format. Hence this project.
+This repo contains Packer templates for multiple hypervisors: vSphere,
+VirtualBox, QEMU, Proxmox, VMware Workstation, and Vagrant.
+
+**Status: HCL2 modernization in progress.** The legacy JSON multi-builder
+templates are being converted to HCL2. The pre-conversion state is preserved
+at the `pre-hcl2-json-archive` tag.
+
+## Featured Use Case: VMware vSphere + Content Library
+
+The primary target for the HCL2 migration is a CI-driven pipeline that builds
+golden images and publishes them to a VMware Content Library on a recurring
+schedule. The `vsphere-iso` builder is configured with
+`content_library_destination` using `ovf = true` to enable in-place updates
+of existing library items.
+
+Target OS versions:
+
+- Rocky Linux 9
+- Ubuntu 22.04 LTS
+
+Multi-hypervisor builders (VirtualBox, QEMU, Proxmox) are retained for the
+broader Packer community and remain functional for the distros listed below.
 
 ## Distros
 
